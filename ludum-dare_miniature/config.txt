@@ -1,0 +1,7 @@
+G :player symbol (G/@/A/char of your choice) (suggested: G)
+
+y :enclosing walls highlight (y/n) (suggested: y)
+1 :enclosing walls style ((s)ingle char/1) (suggested: 1)
+| :enclosing walls single char style (suggested: |)
+
+. :floor default single char style (suggested: .)

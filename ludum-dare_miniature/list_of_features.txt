@@ -1,0 +1,65 @@
+dungeon walls:
+- random level generation 201 mini
+- prefab levels to pick at random
+
+- doors
+- furniture
+
+player:
+- movement
+
+- 2 classes
+
+entities:
+- ennemies = opposing class
+- allies = same class
+- generation in varying proportion
+- movement
+[- final boss]
+
+combat:
+In the final game there will be a lot of combat mechanics.
+- (human)gun
+- (possessed)fireball
+[- ammunition]
+[- melee]
+
+rendering:
+- light levels
+
+other game mechanics:
+[- inventory]
+
+That's a lot of stuff. I could maybe do only a neat mini-dungeon generation. I'm a bit scared of entity movement, and the reduced combat system (gun only/ennemies melee) makes little sense. Or some ennemies have guns too.
+I could make a mockup version with no light and fireballs, but without the complete class specificities. Perhaps I could make 2 reduced classes, human(gun) & possessed(fireball).
+Now why would everyone in the mini-dungeon be hostile to you, idk. If we had alignment it would be either (light) some hidden out humans are on your side, kill everyone else (dark) find the hidden humans to subduct them. And maybe the number of light/dark entities is random and depends on the run. In other words, humans versus possessed.
+To make the allies useful, either make them fight by the player's side, or refuel the player with ammunition, or heal the player.
+Technically I think in C++ it would be easy to have an inventory.
+
+TODO:
+1-> random level generation
+2-> doors
+3-> random furniture
+V-> multiple levels -> stairs/elevators
+5-> prefab levels
+
+6-> player movement
+7-> torchlight effect
+8-> player & entity struct
+V-> title -> class selec screen
+10-> entity generation
+
+-> combat
+11- player gun
+12- player fireball
+13- same for entities
+14-> entity movement
+
+15-> game over screen
+16-> winning the game
+[V-> score]
+
+OTHER DONE/TODO:
+V-> structure
+V-> debug logging -> reliable debug logging
+-> ui
