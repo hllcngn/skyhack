@@ -15,3 +15,6 @@ I'm chosing this over an engine because I just have to do it all
 Once I have a good basis, I'll find an artist to work with me on
  the project.\
 **11:54pm:** Hello world\
+**01:59am:** First set of 4-7 test tiles\
+The graphics seem to have to be small in order to fit a full map in
+ a decently sized window, or to make a 15' fullscreen challenging.\

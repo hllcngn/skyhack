@@ -1,0 +1,50 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "map1.tmx": {
+            "scale": 1.5041666666666664,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.1108033240998,
+                "y": 234.016620498615
+            }
+        },
+        "map2.tmx": {
+            "scale": 1.5041666666666664,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.1108033240998,
+                "y": 238.67036011080336
+            }
+        },
+        "tileset1.tsx": {
+            "dynamicWrapping": true
+        },
+        "tileset2.tsx": {
+            "dynamicWrapping": true,
+            "scaleInEditor": 1
+        }
+    },
+    "last.externalTilesetPath": "D:/ADELIE-PERSO2/gamedev/of_glass_and_steel/ass",
+    "last.imagePath": "D:/ADELIE-PERSO2/gamedev/of_glass_and_steel",
+    "map.height": 15,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 32,
+    "map.tileWidth": 32,
+    "map.width": 20,
+    "openFiles": [
+    ],
+    "project": "ogns.tiled-project",
+    "recentFiles": [
+        "tileset2.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 1
+}
