@@ -20,3 +20,5 @@ The graphics seem to have to be small in order to fit a full map in
  a decently sized window, or to make a 15' fullscreen challenging.\
 **04:39am:** Basic resizable title menu displaying\
 I was too excited to sleep.\
+**06:43am:** I couldn't sleep at all
+**08:49am:** Polishing the title menu
