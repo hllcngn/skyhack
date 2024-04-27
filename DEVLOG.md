@@ -14,11 +14,14 @@ I'm chosing this over an engine because I just have to do it all
  complicated program at the end.\
 Once I have a good basis, I'll find an artist to work with me on
  the project.\
-**11:54pm:** Hello world\
-**01:59am:** First set of 4-7 test tiles\
+**23:54:** Hello world\
+**01:59:** First set of 4-7 test tiles\
 The graphics seem to have to be small in order to fit a full map in
  a decently sized window, or to make a 15' fullscreen challenging.\
-**04:39am:** Basic resizable title menu displaying\
+**04:39:** Basic resizable title menu displaying\
 I was too excited to sleep.\
-**06:43am:** I couldn't sleep at all
-**08:49am:** Polishing the title menu
+**06:43:** I couldn't sleep at all\
+**08:49:** Polishing the title menu\
+**17:09:** I could sleep 3h\
+Start of complexity: moved the title menu business to its own files.
+ I need to refactor the code in order to create more menus.\
