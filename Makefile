@@ -1,6 +1,7 @@
 all:
 	gcc -oOGNS \
 		src/main.c \
-			-lSDL2 -I. -L.
+			-Isrc \
+			-lSDL2 -lSDL2_ttf -I. -L.
 clean:
 	rm *.exe*

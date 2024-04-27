@@ -18,3 +18,5 @@ Once I have a good basis, I'll find an artist to work with me on
 **01:59am:** First set of 4-7 test tiles\
 The graphics seem to have to be small in order to fit a full map in
  a decently sized window, or to make a 15' fullscreen challenging.\
+**04:39am:** Basic resizable title menu displaying\
+I was too excited to sleep.\
