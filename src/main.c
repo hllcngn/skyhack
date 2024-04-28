@@ -20,8 +20,7 @@ case 's': //menu_settings()
 		break;
 case 'l': //menu_load_game()
 		break;
-case 'n': //new_game()
-		break;
+case 'n':	menu_new_game(renderer, window);	break;
 default:	break;}
 
 //SDL end
@@ -29,8 +28,3 @@ SDL_DestroyRenderer(renderer);
 SDL_DestroyWindow(window);
 SDL_Quit();
 return 0;}
-
-
-void new_game(SDL_Renderer* renderer, SDL_Window* window){
-clear_window(renderer, BLACK);
-return;}

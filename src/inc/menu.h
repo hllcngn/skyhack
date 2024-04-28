@@ -13,3 +13,4 @@ T_menu* load_menu_title(SDL_Renderer*);//loading/creating title menu assets
 void free_menu_title(T_menu*);
 void draw_menu_title(SDL_Window*, SDL_Renderer*, T_menu*, int select);
 
+void new_game(SDL_Renderer* renderer, SDL_Window* window);
