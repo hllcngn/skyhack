@@ -8,7 +8,7 @@ T_menu* t_menu_title =load_menu_title(renderer);
 //title screen loop
 int select =0;
 draw_menu_title(window, renderer, t_menu_title, select);
-SDL_RenderPresent(renderer);
+SDL_RenderPresent(renderer); //shouldnt be there
 int terminate =0;
 SDL_Event e;
 while(!terminate){
