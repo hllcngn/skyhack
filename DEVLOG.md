@@ -24,4 +24,19 @@ I was too excited to sleep.\
 **08:49:** Polishing the title menu\
 **17:09:** I could sleep 3h\
 Start of complexity: moved the title menu business to its own files.
- I need to refactor the code in order to create more menus.\
+ I need to refactor the code in order to create more menus.
+### Monday, April 29
+**22:19:** I've been thinking about making the menus correctly or
+ just skipping that part in order to make a fast prototype. I was
+ rather distressed about the matter, also recovering from having
+ skipped a night of sleep. Decided I'm capable of making those
+ menus, so I'll go for making them. We'll see where it takes me.\
+I know that it doesn't make much sense in theory - and it's boring
+ to make. In my idea, I want to implement the game linearly so that
+ I don't miss anything, no part gets overlooked and brings problems
+ later, or implementing the missing parts turns into a headache
+ because the program has no room for them. I don't want my early
+ game to look like a mess or be impenetrable in how it works if I
+ can get it tested by alphas also.\
+I'm also coincidentally not doing very well these days.\
+

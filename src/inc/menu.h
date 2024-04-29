@@ -2,10 +2,18 @@
 #include "ogns.h"
 
 typedef struct{
-	SDL_Texture* t_title;
-	SDL_Texture** t_options;
-	SDL_Texture** t_select;
-	int options_nb;			}T_menu;
+	SDL_Texture*	tex;
+	int		align_right;
+	int		selectable;
+	SDL_Texture*	t_select;
+	SDL_Keycode	key;		}menu_item;
+
+typedef struct{
+	SDL_Texture*	t_title;
+	SDL_Texture**	t_options;
+	menu_item**	items;
+	SDL_Texture**	t_select;
+	int		options_nb;	}T_menu;
 
 
 int menu_title(SDL_Renderer*, SDL_Window*);
