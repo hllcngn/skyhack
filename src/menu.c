@@ -1,45 +1,45 @@
 #include "ogns.h"
 
-int select_previous_menu_item(T_menu* t_menu, int* sel){
+int select_previous_menu_item(Menu* menu, int* sel){
 int select =*sel;
 if(select) select--;
-else select =t_menu->items_nb-1;
+else select =menu->items_nb-1;
 int i=0;
-for(;!t_menu->items[select]->t_select && i<t_menu->items_nb; i++){
+for(;!menu->items[select]->t_select && i<menu->items_nb; i++){
 	if(select) select--;
-	else select =t_menu->items_nb-1;}
-if(i==t_menu->items_nb) return -1;
+	else select =menu->items_nb-1;}
+if(i==menu->items_nb) return -1;
 *sel =select;	return 0;}
 
-int select_next_menu_item(T_menu* t_menu, int* sel){
+int select_nexmenu_item(Menu* menu, int* sel){
 int select =*sel;
-if(select<t_menu->items_nb-1) select++;
+if(select<menu->items_nb-1) select++;
 else select =0;
 int i=0;
-for(;!t_menu->items[select]->t_select && i<t_menu->items_nb; i++){
-	if(select<t_menu->items_nb-1) select++;
+for(;!menu->items[select]->t_select && i<menu->items_nb; i++){
+	if(select<menu->items_nb-1) select++;
 	else select =0;}
-if(i==t_menu->items_nb) return -1;
+if(i==menu->items_nb) return -1;
 *sel =select;	return 0;}
 
 
-void free_menu(T_menu* t_menu){
-menu_item** items	=t_menu->items;
-int items_nb		=t_menu->items_nb;
+void free_menu(Menu* menu){
+Menu_item** items	=menu->items;
+int items_nb		=menu->items_nb;
 for(int i=0;i<items_nb;i++){
 	SDL_DestroyTexture(items[i]->t);
 	if(items[i]->t_select) SDL_DestroyTexture(items[i]->t_select);}
 free(items);
-free(t_menu);
+free(menu);
 return;}
 
 
 void draw_menu(SDL_Window* window, SDL_Renderer* renderer,
-		T_menu* t_menu, int select){
-menu_item** items	=t_menu->items;
-int items_nb		=t_menu->items_nb;
+		Menu* menu, int select){
+Menu_item** items	=menu->items;
+int items_nb		=menu->items_nb;
 //background
-clear_window(renderer, t_menu->bgcolor);
+clear_window(renderer, menu->bgcolor);
 //items
 int w,h; SDL_GetWindowSize(window, &w,&h);
 int y =h/5;
@@ -53,11 +53,13 @@ for(int i=0;i<items_nb;i++){
 return;}
 
 
-int menu_loop(SDL_Renderer* renderer, SDL_Window* window, T_menu* t_menu){
+//return a function pointer?
+Menu_return* menu_loop(SDL_Renderer* renderer, SDL_Window* window, Menu* menu){
+Menu_return* ret =calloc(sizeof(Menu_return), 1);
 int select =0;
-for(int i=0; i<t_menu->items_nb; i++)
-	if(t_menu->items[i]->t_select){ select =i; break;}
-draw_menu(window, renderer, t_menu, select);
+for(int i=0; i<menu->items_nb; i++)
+	if(menu->items[i]->t_select){ select =i; break;}
+draw_menu(window, renderer, menu, select);
 SDL_RenderPresent(renderer);
 int terminate =0;
 SDL_Event e;
@@ -69,27 +71,38 @@ if (e.type ==SDL_QUIT)
 	terminate++;
 else if (e.type ==SDL_WINDOWEVENT) switch(e.window.event){
 	case SDL_WINDOWEVENT_RESIZED:
-		draw_menu(window, renderer, t_menu, select);
+		draw_menu(window, renderer, menu, select);
 		SDL_RenderPresent(renderer);		break;
 	default:					break;}
 else if (e.type ==SDL_KEYDOWN) switch(e.key.keysym.sym){
 	case SDLK_UP:
-		if(!select_previous_menu_item(t_menu, &select)){
-			draw_menu(window, renderer, t_menu, select);
+		if(!select_previous_menu_item(menu, &select)){
+			draw_menu(window, renderer, menu, select);
 			SDL_RenderPresent(renderer);}	break;
 	case SDLK_DOWN:
-		if(!select_next_menu_item(t_menu, &select)){
-			draw_menu(window, renderer, t_menu, select);
+		if(!select_nexmenu_item(menu, &select)){
+			draw_menu(window, renderer, menu, select);
 			SDL_RenderPresent(renderer);}
 							break;
 	case SDLK_q:	terminate++;			break;
 	case SDLK_s: //open settings menu loop
-			return('s');
+		     ret->type ='m';
+			return(ret);
 							break;
 	case SDLK_n: //end title loop, launch game
-			return('n');
-	case SDLK_l:	return('l');			break;
-	default:					break;}}
+		     ret->type ='m';
+			return(ret);
+	case SDLK_l:
+		     ret->type ='m';
+			return(ret);
+	case SDLK_b:
+		     ret->type ='m';
+			return(ret);
+	default:
+			//check if it's one of the items' key
+			//return that key
+			//I don't want menus to call other stuff on their own
+			break;}}
 }//end of title screen loop
-if(terminate)	return('q');
-return -1;}
+if(terminate){ ret->type ='q'; return(ret);}
+ret->type =-1; return(ret);}

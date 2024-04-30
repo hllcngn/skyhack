@@ -55,4 +55,8 @@ It's a bit of a new thing for me since when programming for the
  mind as I was looking into my different projects, because I
  thought, this is too bad this game is for the terminal, because it
  could meet actual success. And it would be a real hassle to make a
- dual version.
+ dual version.\
+**20:55** Fell all of the menu stuff into generic functions, except
+ for loading assets, which is the last code specific to a menu. Now
+ I can add menu details in, through adding them to my structures and
+ handling them in my generic functions.\
