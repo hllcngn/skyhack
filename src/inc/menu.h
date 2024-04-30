@@ -4,7 +4,6 @@
 typedef struct{
 	SDL_Texture*	tex;
 	int		align_right;
-	int		selectable;
 	SDL_Texture*	t_select;
 	SDL_Keycode	key;		}menu_item;
 
@@ -14,6 +13,10 @@ typedef struct{
 	menu_item**	items;
 	SDL_Texture**	t_select;
 	int		options_nb;	}T_menu;
+
+
+int select_previous_menu_item(T_menu* t_menu, int* sel);
+int select_next_menu_item(T_menu* t_menu, int* sel);
 
 
 int menu_title(SDL_Renderer*, SDL_Window*);

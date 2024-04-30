@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "ogns.h"
 
 //running the title menu
 int menu_title(SDL_Renderer* renderer, SDL_Window* window){

@@ -39,4 +39,9 @@ I know that it doesn't make much sense in theory - and it's boring
  game to look like a mess or be impenetrable in how it works if I
  can get it tested by alphas also.\
 I'm also coincidentally not doing very well these days.\
-
+### Tuesday, April 30
+Now that I've recovered and am feeling a slightly better, about the
+ menus, I figure there aren't that many and they include a variety
+ of functionalities, so it would be more of a headache to try to make
+ a system that would generate menus based on menu information, than
+ to just make each of them by hand individually.\
