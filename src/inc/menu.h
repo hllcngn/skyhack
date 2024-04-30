@@ -2,28 +2,24 @@
 #include "ogns.h"
 
 typedef struct{
-	SDL_Texture*	tex;
+	SDL_Texture*	t;
 	int		align_right;
 	SDL_Texture*	t_select;
-	SDL_Keycode	key;		}menu_item;
+	SDL_Keycode	k;		}menu_item;
 
 typedef struct{
-	SDL_Texture*	t_title;
-	SDL_Texture**	t_options;
 	menu_item**	items;
-	SDL_Texture**	t_select;
-	int		options_nb;	}T_menu;
+	int		items_nb;
+	SDL_Color	bgcolor;	}T_menu;
 
 
 int select_previous_menu_item(T_menu* t_menu, int* sel);
 int select_next_menu_item(T_menu* t_menu, int* sel);
+void free_menu(T_menu* t_menu);
+void draw_menu(SDL_Window* window, SDL_Renderer* renderer,
+		T_menu* t_menu, int select);
+int menu_loop(SDL_Renderer* renderer, SDL_Window* window, T_menu* t_menu);
 
 
-int menu_title(SDL_Renderer*, SDL_Window*);
-T_menu* load_menu_title(SDL_Renderer*);//loading/creating title menu assets
-void free_menu_title(T_menu*);
-void draw_menu_title(SDL_Window*, SDL_Renderer*, T_menu*, int select);
-
-int menu_new_game(SDL_Renderer*, SDL_Window*);
+T_menu* load_menu_title(SDL_Renderer*);
 T_menu* load_menu_new_game(SDL_Renderer*);
-void draw_menu_new_game(SDL_Window*, SDL_Renderer*, T_menu*, int select);

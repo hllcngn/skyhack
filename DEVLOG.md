@@ -45,3 +45,14 @@ Now that I've recovered and am feeling a slightly better, about the
  of functionalities, so it would be more of a headache to try to make
  a system that would generate menus based on menu information, than
  to just make each of them by hand individually.\
+I'd never thought menus could be a source of headache.\
+Actually, now that I think of it, having the data in data files or
+ hardcoded in, there is virtually no difference between the two.
+ Those menus are going to take me to the end of the world.\
+It's a bit of a new thing for me since when programming for the
+ terminal, there would be no such complicated nonsense to implement.
+ Originally OGNS was supposed to be for the terminal. I changed my
+ mind as I was looking into my different projects, because I
+ thought, this is too bad this game is for the terminal, because it
+ could meet actual success. And it would be a real hassle to make a
+ dual version.

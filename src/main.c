@@ -14,13 +14,17 @@ SDL_Renderer *renderer =SDL_CreateRenderer(window, -1,
 		SDL_RENDERER_ACCELERATED);
 
 //run title menu
-int title_return =menu_title(renderer, window);
+T_menu* t_menu_title =load_menu_title(renderer);
+int title_return =menu_loop(renderer, window, t_menu_title);
+free_menu(t_menu_title);
 switch(title_return){
 case 's': //menu_settings()
 		break;
 case 'l': //menu_load_game()
 		break;
-case 'n':	menu_new_game(renderer, window);	break;
+case 'n':	T_menu* t_menu_new_game =load_menu_new_game(renderer);
+		menu_loop(renderer, window, t_menu_new_game);
+		free_menu(t_menu_new_game);	break;
 default:	break;}
 
 //SDL end
