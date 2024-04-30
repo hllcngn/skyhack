@@ -5,21 +5,20 @@
 #define ALIGN_RIGHT	2
 
 typedef struct{
+	int		type;
+	int		next_menu;	}Menu_return;
+
+typedef struct{
 	SDL_Texture*	t;
 	int		align;
 	SDL_Texture*	t_select;
-	SDL_Keycode	k;		}Menu_item;
+	SDL_Keycode	k;
+	Menu_return	ret;		}Menu_item;
 
 typedef struct{
 	Menu_item**	items;
 	int		items_nb;
 	SDL_Color	bgcolor;	}Menu;
-
-typedef struct{
-	int		type;
-	int (*menu)(SDL_Renderer*, SDL_Window*, Menu*);
-	void (*foo)(void);
-}Menu_return;
 
 
 int select_previous_menu_item(Menu* menu, int* sel);
@@ -27,7 +26,8 @@ int select_next_menu_item(Menu* menu, int* sel);
 void free_menu(Menu* menu);
 void draw_menu(SDL_Window* window, SDL_Renderer* renderer,
 		Menu* menu, int select);
-Menu_return* menu_loop(SDL_Renderer* renderer, SDL_Window* window, Menu* menu);
+Menu_return menu_loop(SDL_Renderer* renderer, SDL_Window* window,
+		Menu* menu);
 
 
 Menu* load_menu_title(SDL_Renderer*);

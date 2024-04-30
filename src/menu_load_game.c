@@ -10,7 +10,7 @@ int n =0; SDL_Surface* s_item;
 s_item =TTF_RenderText_Blended(font, "Load game", RED);
 items[n]->t =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
-items[n]->align = items[n]->k =0;
+items[n]->align = items[n]->k =0; items[n]->ret =(Menu_return){0,0};
 items[n]->t_select =NULL;
 n++;
 
@@ -20,7 +20,7 @@ SDL_FillRect(s_item, &r, 79);
 items[n]->t =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
 items[n]->align =ALIGN_CENTER;
-items[n]->k =0;
+items[n]->k =0; items[n]->ret =(Menu_return){'g','l'};
 items[n]->t_select =NULL;
 n++;
 
@@ -31,7 +31,7 @@ s_item =SDL_LoadBMP("ass/button-back1-selected.bmp");
 items[n]->t_select =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
 items[n]->align =ALIGN_CENTER;
-items[n]->k ='b';
+items[n]->k ='b'; items[n]->ret =(Menu_return){'m','t'};
 
 Menu* menu =malloc(sizeof(Menu));
 menu->items	=items;

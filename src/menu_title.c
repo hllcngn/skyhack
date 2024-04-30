@@ -11,7 +11,7 @@ s_item =SDL_LoadBMP("ass/title1.bmp");
 items[n]->t =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
 items[n]->t_select =NULL;
-items[n]->align = items[n]->k =0;
+items[n]->align = items[n]->k =0; items[n]->ret =(Menu_return){0,0};
 n++;
 
 s_item =TTF_RenderText_Solid(font,
@@ -23,7 +23,7 @@ s_item =TTF_RenderText_Solid(font,
 items[n]->t_select =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
 items[n]->align =0;
-items[n]->k ='n';
+items[n]->k ='n'; items[n]->ret =(Menu_return){'m','n'};
 n++;
 
 s_item =TTF_RenderText_Solid(font,
@@ -35,7 +35,7 @@ s_item =TTF_RenderText_Solid(font,
 items[n]->t_select =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
 items[n]->align =0;
-items[n]->k ='l';
+items[n]->k ='l'; items[n]->ret =(Menu_return){'m','l'};
 n++;
 
 s_item =TTF_RenderText_Solid(font,
@@ -47,7 +47,7 @@ s_item =TTF_RenderText_Solid(font,
 items[n]->t_select =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
 items[n]->align =0;
-items[n]->k ='s';
+items[n]->k ='s'; items[n]->ret =(Menu_return){'m','s'};
 n++;
 
 s_item =TTF_RenderText_Solid(font,
@@ -59,7 +59,7 @@ s_item =TTF_RenderText_Solid(font,
 items[n]->t_select =SDL_CreateTextureFromSurface(renderer, s_item);
 SDL_FreeSurface(s_item);
 items[n]->align =0;
-items[n]->k ='q';
+items[n]->k ='q'; items[n]->ret =(Menu_return){'q',0};
 
 Menu* menu =malloc(sizeof(Menu));
 menu->items	=items;
