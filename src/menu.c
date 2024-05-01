@@ -46,7 +46,8 @@ int y =h/5;
 for(int i=0;i<items_nb;i++){
 	int wt,ht; SDL_QueryTexture(items[i]->t,NULL,NULL,&wt,&ht);
 	SDL_Rect r_item =(SDL_Rect){(w-350)/2, y, wt,ht};
-	if (i==select && items[i]->t_select)
+	if(items[i]->align==ALIGN_RIGHT) r_item.x =(w+350)/2-wt;
+	if(i==select && items[i]->t_select)
 		SDL_RenderCopy(renderer, items[i]->t_select, NULL, &r_item);
 	else	SDL_RenderCopy(renderer, items[i]->t, NULL, &r_item);
 	y+=ht+10;}

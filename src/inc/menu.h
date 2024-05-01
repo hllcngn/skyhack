@@ -1,8 +1,9 @@
 #pragma once
 #include "ogns.h"
 
-#define ALIGN_CENTER	1
-#define ALIGN_RIGHT	2
+#define ALIGN_LEFT	1
+#define ALIGN_CENTER	2
+#define ALIGN_RIGHT	3
 
 typedef struct{
 	int		type;

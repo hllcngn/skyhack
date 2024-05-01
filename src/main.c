@@ -5,11 +5,10 @@
 int main(int ac, char** av){
 //SDL init
 SDL_Init(SDL_INIT_VIDEO);	TTF_Init();
-SDL_Window   *window =SDL_CreateWindow("Of Glass And Steel",
-		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		600, 400,
+SDL_Window* window =SDL_CreateWindow("Of Glass And Steel",
+		SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,600,400,
 		SDL_WINDOW_SHOWN |SDL_WINDOW_RESIZABLE);
-SDL_Renderer *renderer =SDL_CreateRenderer(window, -1,
+SDL_Renderer* renderer =SDL_CreateRenderer(window, -1,
 		SDL_RENDERER_ACCELERATED);
 
 //loading menus
