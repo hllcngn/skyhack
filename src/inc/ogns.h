@@ -11,4 +11,6 @@
 #define LIGHTBLUE	(SDL_Color){95,205,228,0xFF}
 #define DARKBLUE	(SDL_Color){63,63,116,0xFF}
 
+void new_game(SDL_Renderer* renderer, SDL_Window* window);
+void load_game(SDL_Renderer* renderer, SDL_Window* window);
 void start_game(SDL_Renderer* renderer, SDL_Window* window);

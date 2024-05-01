@@ -6,7 +6,7 @@
 
 typedef struct{
 	int		type;
-	int		next_menu;	}Menu_return;
+	int		info;		}Menu_return;
 
 typedef struct{
 	SDL_Texture*	t;

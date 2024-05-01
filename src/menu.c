@@ -84,41 +84,13 @@ else if (e.type ==SDL_KEYDOWN) switch(e.key.keysym.sym){
 			draw_menu(window, renderer, menu, select);
 			SDL_RenderPresent(renderer);}
 							break;
-							/*
 	case SDLK_q:	terminate++;			break;
-	//BUT WE DON'T KNOW THE KEYS AHEAD OF TIME
-	//maybe I can put that in the menu_item structure
-	case SDLK_s: //open settings menu loop
-		     ret->type ='m';
-		     ret->next_menu ='s';
-			return(ret);
-							break;
-	case SDLK_n: //end title loop, launch game
-		     ret->type ='m';
-		     ret->next_menu ='n';
-			return(ret);
-	case SDLK_l:
-		     ret->type ='m';
-		     ret->next_menu ='l';
-			return(ret);
-	case SDLK_b:
-		     ret->type ='m';
-		     ret->next_menu ='t';
-			return(ret);
-	case SDLK_RETURN:
-			ret->type ='g';
-			ret->next_menu ='n';
-			return(ret);
-			*/
 	default:
 		int i; for(i=0; i<menu->items_nb
 				&& e.key.keysym.sym!=menu->items[i]->k; i++);
 		if(i<menu->items_nb)
 			return menu->items[i]->ret;
-			//check if it's one of the items' key
-			//return that key
-			//I don't want menus to call other stuff on their own
-			break;}}
+							break;}}
 }//end of title screen loop
 Menu_return ret;
 if(terminate){ ret.type ='q'; return(ret);}
