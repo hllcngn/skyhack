@@ -1,5 +1,5 @@
-CC	= /usr/bin/gcc
 NAME	= skyhack
+CC	= /usr/bin/gcc
 SRCFOLDER	= ./src/
 SRCFILES	= \
 		main.c \
@@ -10,9 +10,13 @@ SRCFILES	= \
 		draw.c \
 		player_actions.c
 SRC	= $(addprefix $(SRCFOLDER), $(SRCFILES))
+OBJ	= $(SRC:.c=.o)
+#INCFOLDER	= ./src/
 
-all:
-	$(CC) $(SRC) -lncurses
-
+all:	$(OBJ)
+	$(CC) $^ -o $(NAME) -lncurses
+%.o:	%.c
+	$(CC) -c $^ -o $@ 
 clean:
-	rm a.exe skyhack.exe
+	rm -f skyhack.exe a.exe
+	rm -f $(OBJ)
