@@ -1,5 +1,5 @@
-NAME	= skyhack
-CC	= /usr/bin/gcc
+NAME		= skyhack
+CC		= /usr/bin/gcc
 SRCFOLDER	= ./src/
 SRCFILES	= \
 		main.c \
@@ -8,16 +8,18 @@ SRCFILES	= \
 		rngbrush.c \
 		printbrush.c \
 		draw.c \
-		player_actions.c
+		player_actions.c \
+
 OBJFOLDER	= ./obj/
-OBJFILES	= $(SRCFILES:.c=.o)
-OBJ	= $(addprefix $(OBJFOLDER), $(OBJFILES))
-#INCFOLDER	= ./src/
+OBJ		= $(addprefix $(OBJFOLDER), $(SRCFILES:.c=.o))
+INCFOLDER	= ./inc/
+
 
 all:	$(OBJ)
 	$(CC) $^ -o $(NAME) -lncurses
-$(addprefix $(OBJFOLDER), %.o):	$(addprefix $(SRCFOLDER), %.c)
-	$(CC) -c $^ -o $@ 
+
+$(OBJFOLDER)%.o:	$(SRCFOLDER)%.c
+	$(CC) -c $^ -o $@ -I$(INCFOLDER)
 clean:
 	rm -f skyhack.exe a.exe
 	rm -f $(OBJ)
