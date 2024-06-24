@@ -9,13 +9,14 @@ SRCFILES	= \
 		printbrush.c \
 		draw.c \
 		player_actions.c
-SRC	= $(addprefix $(SRCFOLDER), $(SRCFILES))
-OBJ	= $(SRC:.c=.o)
+OBJFOLDER	= ./obj/
+OBJFILES	= $(SRCFILES:.c=.o)
+OBJ	= $(addprefix $(OBJFOLDER), $(OBJFILES))
 #INCFOLDER	= ./src/
 
 all:	$(OBJ)
 	$(CC) $^ -o $(NAME) -lncurses
-%.o:	%.c
+$(addprefix $(OBJFOLDER), %.o):	$(addprefix $(SRCFOLDER), %.c)
 	$(CC) -c $^ -o $@ 
 clean:
 	rm -f skyhack.exe a.exe
