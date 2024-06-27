@@ -3,7 +3,7 @@ CC		= /usr/bin/gcc
 SRCFOLDER	= ./src/
 SRCFILES	= \
 		main.c \
-		main2.c \
+		game.c \
 		generate.c \
 		rngbrush.c \
 		printbrush.c \

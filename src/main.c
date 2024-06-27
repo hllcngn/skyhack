@@ -3,6 +3,10 @@
 #include <stdlib.h>//rand
 #include <time.h>//time()
 
+int main2(void){
+game();
+return 0;}
+
 int	main(int ac, char **av){
 initscr();
 curs_set(0); noecho(); cbreak();
@@ -33,7 +37,8 @@ printw("\nthe game will take up the whole window, continue?");
 getch();
 
 clear();
-game();
+main2();
+//game();
 clear();
 
 clear();

@@ -10,6 +10,7 @@ void	make_NS_wall(int y,int x, int n, char **clsn){
 // vspace_buf(clsn, y,x, 'X', n);
 }
 
+	// v seems like I could improve this function
 void	generate_static_walls(char **clsn){
 if(WALL_HL =='y')
 attron(A_REVERSE);

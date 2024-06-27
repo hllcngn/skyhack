@@ -35,6 +35,7 @@ case K_UP_LEFT:
 case K_UP_RIGHT:
 case K_DOWN_LEFT:
 case K_DOWN_RIGHT:
+	//character & floor tile are redrawn inside of this function
 	pos =player_move(k, pos, clsn); break;
 
 default:	break;}

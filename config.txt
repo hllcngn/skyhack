@@ -1,3 +1,5 @@
+NB this file isn't used yet in the game
+
 n :enclosing walls highlight (y/n) (suggested: y)
 g :floor style ((g)rid/(s)ingle char) (suggested: g)
 | :floor style II (grid: (|/+//) OR single char: (./char of your choice)) (suggested: |)
