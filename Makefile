@@ -15,11 +15,16 @@ OBJ		= $(addprefix $(OBJFOLDER), $(SRCFILES:.c=.o))
 INCFOLDER	= ./inc/
 
 
+hello:
+	$(CC) ./src/hello.c -o hello -lncurses
+
 all:	$(OBJ)
 	$(CC) $^ -o $(NAME) -lncurses
 
 $(OBJFOLDER)%.o:	$(SRCFOLDER)%.c
 	$(CC) -c $^ -o $@ -I$(INCFOLDER)
+
 clean:
-	rm -f skyhack.exe a.exe
 	rm -f $(OBJ)
+fclean:	clean
+	rm -f skyhack.exe skyhack.exe.stackdump hello.exe

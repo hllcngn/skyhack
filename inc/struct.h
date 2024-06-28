@@ -10,6 +10,9 @@ typedef struct{
 	int	cols;
 	char	**b;} c2buf;
 
+//char* b
+//char** map -> b(lines)
+
 typedef struct{
 	int	lines;
 	int	cols;

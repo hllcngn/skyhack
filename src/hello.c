@@ -6,7 +6,7 @@ initscr();
 noecho(); cbreak(); curs_set(0);
 //nodelay(stdscr,TRUE);
 
-mvprintw(2,7,"Hello d0pe");
+mvprintw(2,7,"Hello this is d0pe");
 
 refresh();
 getch();

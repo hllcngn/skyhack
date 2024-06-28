@@ -1,15 +1,13 @@
 #ifndef H_H
 #define H_H
 
-#include "symbols.h"
 #include "controls.h"
+#include "symbols.h"
 
-#include "keywords.h"
 #include "preproc.h"
-
+#include "prototypes.h"
 #include "struct.h"
 #include "objects.h"
-
-#include "prototypes.h"
+#include "keywords.h"
 
 #endif

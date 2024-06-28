@@ -12,6 +12,7 @@
 #define COMMONFOLK	4
 	#define HACKER		5
 
+//???
 
 
 //#define LIGHT	1

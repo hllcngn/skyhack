@@ -2,14 +2,11 @@
 #define PROTOTYPES_H
 #include "h.h"
 
+//game.c
 void	game();
 
-//generate.c
-void	generate_static_walls();
-void	generate_random_walls();
-//rngbrush.c
-int	rn(int max); //0-max inclusive
-int	rrange(int min,int max); //inclusive
+//player_actions.c
+vect	player_move(char k, vect pos, char **clsn);
 
 //draw.c
 void	draw_empty_level();
@@ -28,7 +25,11 @@ void	fill_term(char c);
 void	fill_space(int y,int x, char c, int h,int w);
 void	box_space(int y,int x, char c, int h,int w);
 
-//player_actions.c
-vect	player_move(char k, vect pos, char **clsn);
+//generate.c
+void	generate_static_walls();
+void	generate_random_walls();
+//rngbrush.c
+int	rn(int max); //0-max inclusive
+int	rrange(int min,int max); //inclusive
 
 #endif
