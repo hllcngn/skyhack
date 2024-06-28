@@ -3,14 +3,14 @@
 #include "h.h"
 
 //game.c
-void	game();
+void	game(GAME* gam);
 
 //player_actions.c
-vect	player_move(char k, vect pos, char **clsn);
+vect	player_move(char k, vect pos, char *clsn);
 
 //draw.c
 void	draw_empty_level();
-void	make_level(char **clsn);
+void	make_level(char *clsn);
 void	draw_enclosing_walls();
 void	draw_entire_floor();
 void	draw_floor_at(vect pos);
@@ -25,8 +25,15 @@ void	fill_term(char c);
 void	fill_space(int y,int x, char c, int h,int w);
 void	box_space(int y,int x, char c, int h,int w);
 
+
+//main.c
+int	title();
+
+//main2.c
+int	main2(GAME* gam);
+
 //generate.c
-void	generate_static_walls();
+void	generate_static_walls(char* clsn);
 void	generate_random_walls();
 //rngbrush.c
 int	rn(int max); //0-max inclusive

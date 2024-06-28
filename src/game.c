@@ -1,15 +1,8 @@
 #include "h.h"
-#include <ncurses.h>
-#include <stdlib.h>//malloc
 
-void	game(){
-vect	pos ={18,75};
-
-char	**clsn =(char**)malloc(sizeof(char*)*LINES+1); clsn[LINES] =NULL;
-for (int i =0; i<LINES; i++){
-	clsn[i] =(char*)malloc(COLS+1); clsn[i][COLS] =0;
-	for (int j=0; j<COLS; j++) clsn[i][j] =' ';}
-//todo: free
+void	game(GAME* gam){
+vect	pos= gam->pos;
+char*	clsn= gam->clsn;
 
 make_level(clsn);
 mvaddch(pos.y,pos.x, C_PLAYER);

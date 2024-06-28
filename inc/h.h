@@ -5,9 +5,13 @@
 #include "symbols.h"
 
 #include "preproc.h"
-#include "prototypes.h"
 #include "struct.h"
 #include "objects.h"
+#include "prototypes.h"
 #include "keywords.h"
+
+#include <ncurses.h>
+#include <stdlib.h>
+#include <time.h>
 
 #endif

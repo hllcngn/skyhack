@@ -1,12 +1,11 @@
 #include "h.h"
-#include <ncurses.h>
 
 void	draw_empty_level(){
 draw_entire_floor();
 draw_enclosing_walls();
 return;}
 
-void	make_level(char **clsn){
+void	make_level(char *clsn){
 draw_entire_floor();
 generate_static_walls(clsn);
 generate_random_walls();
