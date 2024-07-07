@@ -1,16 +1,14 @@
 #include "h.h"
 
-void	make_level(char *clsn){
+void	make_level(char* clsn, buf1 b){
 draw_entire_floor();
-generate_static_walls(clsn);
-generate_random_walls();
-draw_enclosing_walls();
-return;}
+make_static_walls(clsn);
+make_random_walls();
+draw_enclosing_walls();}
 
 void	draw_empty_level(){
 draw_entire_floor();
-draw_enclosing_walls();
-return;}
+draw_enclosing_walls();}
 
 void	draw_entire_floor(){
 attron(A_DIM);
@@ -27,8 +25,7 @@ else if (PAVING=='/')
 for (int i=0; i<LINES; i+=2){ //even y: / on even x/\ on odd
 	space1in2(i,0, '/','\\', COLS);
 	space1in2(i+1,0, '\\','/', COLS);}}
-attroff(A_DIM);
-return;}
+attroff(A_DIM);}
 
 void	draw_enclosing_walls(){
 if	(OUTWALL_HL =='y')
@@ -38,8 +35,7 @@ space(LINES-1,0, '-', COLS);
 vspace(0,0, '|', LINES);
 vspace(0,COLS-1, '|', LINES);
 if	(OUTWALL_HL =='y')
-attroff(A_REVERSE);
-return;}
+attroff(A_REVERSE);}
 
 void	draw_floor_at(vect pos){
 move(pos.y,pos.x);
@@ -56,5 +52,4 @@ else if	(PAVING=='/')
 if (pos.x%2)	if (pos.y%2)	addch('/');
 		else		addch('\\');
 else		if (pos.y%2)	addch('\\');
-		else		addch('/');}
-return;}
+		else		addch('/');}}

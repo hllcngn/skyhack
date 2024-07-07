@@ -9,10 +9,10 @@ int	game(GAME* gm);
 vect	player_move(char k, vect pos, char *clsn);
 
 //draw.c
+void	make_level(char *clsn, buf1 b);
 void	draw_empty_level();
-void	make_level(char *clsn);
-void	draw_enclosing_walls();
 void	draw_entire_floor();
+void	draw_enclosing_walls();
 void	draw_floor_at(vect pos);
 //printbrush.c
 void	space_yx(int y,int x, char c, int n);
@@ -33,10 +33,15 @@ int	title();
 int	main2(GAME* gm);
 
 //generate.c
-void	generate_static_walls(char* clsn);
-void	generate_random_walls();
+void	make_static_walls(char* clsn);
+void	make_random_walls();
 //rngbrush.c
 int	rn(int max); //0-max inclusive
 int	rrange(int min,int max); //inclusive
+
+
+
+//buf.c
+void save_buf(char* file, buf1 b);
 
 #endif

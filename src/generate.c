@@ -3,7 +3,7 @@ void	make_NS_wall(int y,int x, int n, char *clsn);
 void	make_WE_wall(int y,int x, int n, char *clsn);
 
 	// v seems like I could improve this function
-void	generate_static_walls(char *clsn){
+void	make_static_walls(char *clsn){
 if(WALL_HL =='y')
 attron(A_REVERSE);
 
@@ -34,7 +34,7 @@ void	make_NS_wall(int y,int x, int n, char *clsn){
 // vspace_buf(clsn, y,x, 'X', n);
 }
 
-void	generate_random_walls(){
+void	make_random_walls(){
 attron(A_REVERSE);
 
 int	minroomsize =4; //= cupboard

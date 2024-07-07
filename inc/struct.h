@@ -2,21 +2,10 @@
 #define STRUCT_H
 
 typedef struct{
-	int	y;
-	int	x;} vect;
+int	y, x;	} vect;
 
 typedef struct{
-	int	lines;
-	int	cols;
-	char	**b;} c2buf;
-
-//char* b
-//char** map -> b(lines)
-
-typedef struct{
-	int	lines;
-	int	cols;
-	int	depth;
-	char	***b;} c3buf;
+int	h, w;
+char*	c;	}buf1;
 
 #endif

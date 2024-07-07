@@ -1,5 +1,6 @@
 #ifndef OBJECTS_H
 #define OBJECTS_H
+#include "struct.h"
 
 typedef struct{
 	int	cl4ss;
@@ -12,6 +13,7 @@ typedef struct{
 typedef struct{
 	vect	pos;
 	char*	clsn;
+	buf1	b1;
 } GAME;
 
 #endif
