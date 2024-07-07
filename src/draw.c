@@ -1,10 +1,5 @@
 #include "h.h"
 
-void	draw_empty_level(){
-draw_entire_floor();
-draw_enclosing_walls();
-return;}
-
 void	make_level(char *clsn){
 draw_entire_floor();
 generate_static_walls(clsn);
@@ -12,22 +7,9 @@ generate_random_walls();
 draw_enclosing_walls();
 return;}
 
-void	draw_floor_at(vect pos){
-move(pos.y,pos.x);
-if	(FLOOR_TYPE=='s')
-addch('.');
-else if	(FLOOR_TYPE=='p'){
-if	(PAVING=='|')
-if (pos.x%2)	addch('_');
-else		addch('|');
-else if	(PAVING=='+')
-if (pos.x%2)	addch(' ');
-else		addch('+');
-else if	(PAVING=='/')
-if (pos.x%2)	if (pos.y%2)	addch('/');
-		else		addch('\\');
-else		if (pos.y%2)	addch('\\');
-		else		addch('/');}
+void	draw_empty_level(){
+draw_entire_floor();
+draw_enclosing_walls();
 return;}
 
 void	draw_entire_floor(){
@@ -57,4 +39,22 @@ vspace(0,0, '|', LINES);
 vspace(0,COLS-1, '|', LINES);
 if	(OUTWALL_HL =='y')
 attroff(A_REVERSE);
+return;}
+
+void	draw_floor_at(vect pos){
+move(pos.y,pos.x);
+if	(FLOOR_TYPE=='s')
+addch('.');
+else if	(FLOOR_TYPE=='p'){
+if	(PAVING=='|')
+if (pos.x%2)	addch('_');
+else		addch('|');
+else if	(PAVING=='+')
+if (pos.x%2)	addch(' ');
+else		addch('+');
+else if	(PAVING=='/')
+if (pos.x%2)	if (pos.y%2)	addch('/');
+		else		addch('\\');
+else		if (pos.y%2)	addch('\\');
+		else		addch('/');}
 return;}

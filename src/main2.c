@@ -1,13 +1,14 @@
 #include "h.h"
 
-int main2(GAME* gam){
+int main2(GAME* gm){
 
-gam->pos= (vect){18,75};
+gm->pos= (vect){18,75};
 char* clsn= malloc(LINES*COLS);
 for(int i= 0;i< LINES*COLS;i++)
 	clsn[i]= ' ';
-gam->clsn= clsn;
-//todo: free
+gm->clsn= clsn;
 
-game(gam);
+game(gm);
+
+free(gm->clsn);
 return 0;}

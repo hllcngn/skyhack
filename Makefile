@@ -29,3 +29,4 @@ clean:
 	rm -f $(OBJ)
 fclean:	clean
 	rm -f skyhack.exe skyhack.exe.stackdump hello.exe
+re:	fclean all

@@ -1,5 +1,4 @@
 #include "h.h"
-#include <ncurses.h>
 
 vect	player_move(char k, vect pos, char *clsn){
 vect	mv;

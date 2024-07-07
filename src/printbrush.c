@@ -1,5 +1,6 @@
-#include "h.h"
 #include <ncurses.h>
+#include "struct.h"
+#include "prototypes.h"
 
 void space_yx(int y,int x, char c, int n){//todo:swap c and n args
  move(y,x); for (int i=0; i<n; i++) addch(c); return;}

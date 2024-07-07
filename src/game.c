@@ -1,8 +1,8 @@
 #include "h.h"
 
-void	game(GAME* gam){
-vect	pos= gam->pos;
-char*	clsn= gam->clsn;
+int	game(GAME* gm){
+vect	pos= gm->pos;
+char*	clsn= gm->clsn;
 
 make_level(clsn);
 mvaddch(pos.y,pos.x, C_PLAYER);
@@ -11,7 +11,7 @@ char	k =0;
 while (k =getch()){
 switch(k){
 
-case K_QUIT:	return;
+case K_QUIT:	return 0;
 case ']':clear(); draw_empty_level();
 	//draw some sample rooms
 	//for room size comparison
@@ -33,4 +33,4 @@ case K_DOWN_RIGHT:
 
 default:	break;}
 }
-return;}
+return 0;}

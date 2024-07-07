@@ -3,7 +3,7 @@
 #include "h.h"
 
 //game.c
-void	game(GAME* gam);
+int	game(GAME* gm);
 
 //player_actions.c
 vect	player_move(char k, vect pos, char *clsn);
@@ -30,7 +30,7 @@ void	box_space(int y,int x, char c, int h,int w);
 int	title();
 
 //main2.c
-int	main2(GAME* gam);
+int	main2(GAME* gm);
 
 //generate.c
 void	generate_static_walls(char* clsn);
