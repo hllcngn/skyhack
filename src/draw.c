@@ -1,6 +1,6 @@
 #include "h.h"
 
-void	make_level(char* clsn, buf1 b){
+void	draw_level(char* clsn, buf1 b){
 draw_entire_floor();
 make_static_walls(clsn);
 make_random_walls();
@@ -53,3 +53,18 @@ if (pos.x%2)	if (pos.y%2)	addch('/');
 		else		addch('\\');
 else		if (pos.y%2)	addch('\\');
 		else		addch('/');}}
+
+
+void	draw_path(vect* pts, int n){
+for (int i= 0; i < n-1; i++){
+if (pts[i].y == pts[i+1].y){
+	int nn = pts[i+1].x-pts[i].x;	//including both points
+	if (nn>0)	nn += 1;
+	else		nn -= 1;
+	space(pts[i], C_PATH, nn);}
+else if (pts[i].x == pts[i+1].x){
+	int nn = pts[i+1].y-pts[i].y;	//including both points
+	if (nn>0)	nn += 1;
+	else		nn -= 1;
+	vspace(pts[i], C_PATH, nn);}
+else break;}}

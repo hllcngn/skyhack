@@ -3,6 +3,8 @@
 
 #define C_PLAYER	'G'	// G/@/A/
 
+#define C_PATH		'.'	// ./-/
+
 #define FLOOR_TYPE	's'	// s/p
 #define PAVING		'+'	// |/+//
 #define C_FLOOR		'.'

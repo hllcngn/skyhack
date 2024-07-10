@@ -1,5 +1,10 @@
 #include "h.h"
 
+//unused yet
+void	make_level(char *clsn, buf1 b){
+make_static_walls(clsn);
+make_random_walls();}
+
 	// v seems like I could improve this function
 void	make_static_walls(char *clsn){
 if(WALL_HL =='y')
