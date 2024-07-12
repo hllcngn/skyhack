@@ -15,6 +15,7 @@ void	draw_entire_floor();
 void	draw_enclosing_walls();
 void	draw_floor_at(vect pos);
 void	draw_path(vect* pts, int n);
+void	draw_path2(vect* pts, int n);
 //printbrush.c
 void	space_yx(int y,int x, char c, int n);
 void	space_buf_yx(int y,int x, char c, int n, char **cbuf);

@@ -16,7 +16,8 @@ pts[1] = (vect){20,5};
 pts[2] = (vect){20,18};
 pts[3] = (vect){30,18};
 pts[4] = (vect){30,15};
-draw_path(pts,5);
+//draw_path(pts,5);
+draw_path2(pts,5);
 
 gm->pos = pos;
 gm->clsn = clsn;
