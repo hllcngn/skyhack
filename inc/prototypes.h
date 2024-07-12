@@ -23,9 +23,10 @@ void	space_vect(vect coord, char c, int n);
 void	space1in2(int y,int x, char c1,char c2, int n);
 void	vspace_yx(int y,int x, char c, int n);
 void	vspace_vect(vect coord, char c, int n);
+void	box_space(int y,int x, char c, int h,int w);
 void	fill_term(char c);
 void	fill_space(int y,int x, char c, int h,int w);
-void	box_space(int y,int x, char c, int h,int w);
+void stroke(vect p1, vect p2, char c);
 
 
 //main.c
