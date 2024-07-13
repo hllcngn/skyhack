@@ -53,34 +53,3 @@ if (pos.x%2)	if (pos.y%2)	addch('/');
 		else		addch('\\');
 else		if (pos.y%2)	addch('\\');
 		else		addch('/');}}
-
-
-void	draw_path(vect* pts, int n){
-for (int i =0; i <n-1; i++){
-if (pts[i].y == pts[i+1].y){
-	int nn = pts[i+1].x -pts[i].x;
-	if (!nn)	continue;
-	nn>0 ? nn++ : nn--;	//including both points
-	space(pts[i], C_PATH, nn);}
-else if (pts[i].x == pts[i+1].x){
-	int nn = pts[i+1].y -pts[i].y;
-	if (!nn)	continue;
-	nn>0 ? nn++ : nn--;
-	vspace(pts[i], C_PATH, nn);}
-else	break;}}
-
-void	draw_path2(vect* pts, int n){
-for (int i =0; i <n-1; i++){
-	stroke(pts[i],pts[i+1],C_PATH);
-	/*
-int dy = pts[i+1].y -pts[i].y;
-int dx = pts[i+1].x -pts[i].x;
-if (!dy){ if (!dx)	continue;
-	dx >0 ?	space(pts[i], C_PATH, dx+1) :
-		space(pts[i+1], C_PATH, -dx+1);}
-else if (!dx){ if (!dy)	continue;
-	dy >0 ?	vspace(pts[i], C_PATH, dy+1) :
-		vspace(pts[i+1], C_PATH, -dy+1);}
-else	break;
-*/
-}}

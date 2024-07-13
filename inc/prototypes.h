@@ -6,7 +6,7 @@
 int	game(GAME* gm);
 
 //player_actions.c
-vect	player_move(char k, vect pos, char *clsn);
+void	player_move(char k, vect* pos, char *clsn);
 
 //draw.c
 void	draw_level(char *clsn, buf1 b);
@@ -14,8 +14,6 @@ void	draw_empty_level();
 void	draw_entire_floor();
 void	draw_enclosing_walls();
 void	draw_floor_at(vect pos);
-void	draw_path(vect* pts, int n);
-void	draw_path2(vect* pts, int n);
 //printbrush.c
 void	space_yx(int y,int x, char c, int n);
 void	space_buf_yx(int y,int x, char c, int n, char **cbuf);
@@ -24,6 +22,7 @@ void	space1in2(int y,int x, char c1,char c2, int n);
 void	vspace_yx(int y,int x, char c, int n);
 void	vspace_vect(vect coord, char c, int n);
 void	box_space(int y,int x, char c, int h,int w);
+void	path(vect* pts, int n);
 void	fill_term(char c);
 void	fill_space(int y,int x, char c, int h,int w);
 void stroke(vect p1, vect p2, char c);
