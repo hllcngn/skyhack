@@ -49,5 +49,6 @@ int	rrange(int min,int max); //inclusive
 
 //buf.c
 void save_buf(char* file, buf1 b);
+void load_buf(FILE* file, buf1* b);
 
 #endif

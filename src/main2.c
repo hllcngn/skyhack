@@ -5,8 +5,13 @@ vect pos = (vect){18,75};
 char* clsn = malloc(LINES*COLS);
  for(int i= 0;i < LINES*COLS; i++) clsn[i]= ' ';
 buf1 b;
- b.h = LINES; b.w = COLS;
- b.c = malloc(b.h*b.w);
+FILE* f =fopen("saves/save1","r");
+if (!f){
+	b.h = LINES; b.w = COLS;
+	b.c = calloc(b.h*b.w,1);}
+else{
+	b.h = 0; b.w = 0;
+	load_buf(f, &b);}
 
 make_level(clsn, b);
 mvaddch(pos.y,pos.x, C_PLAYER);
