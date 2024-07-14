@@ -9,6 +9,7 @@ int	game(GAME* gm);
 void	player_move(char k, vect* pos, char *clsn);
 
 //draw.c
+void draw_buf(buf1 b);
 void	draw_level(char *clsn, buf1 b);
 void	draw_empty_level();
 void	draw_entire_floor();

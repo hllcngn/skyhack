@@ -8,12 +8,13 @@ buf1 b;
 FILE* f =fopen("saves/save1","r");
 if (!f){
 	b.h = LINES; b.w = COLS;
-	b.c = calloc(b.h*b.w,1);}
+	b.c = calloc(b.h*b.w,1);
+	make_level(clsn, b);}
 else{
 	b.h = 0; b.w = 0;
-	load_buf(f, &b);}
+	load_buf(f, &b);
+	draw_buf(b);}
 
-make_level(clsn, b);
 mvaddch(pos.y,pos.x, C_PLAYER);
 
 

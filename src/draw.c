@@ -1,5 +1,11 @@
 #include "h.h"
 
+void	draw_buf(buf1 b){
+for (int y =0; y <b.h; y++)
+for (int x =0; x <b.w; x++)
+	if (b.c[x +y*b.w])
+		mvaddch(y, x, b.c[x +y*b.w]);}
+
 void	draw_level(char* clsn, buf1 b){
 draw_entire_floor();
 make_static_walls(clsn, b);
