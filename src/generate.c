@@ -2,11 +2,11 @@
 
 //unused yet
 void	make_level(char *clsn, buf1 b){
-make_static_walls(clsn);
+make_static_walls(clsn, b);
 make_random_walls();}
 
 	// v seems like I could improve this function
-void	make_static_walls(char *clsn){
+void	make_static_walls(char *clsn, buf1 b){
 if(WALL_HL =='y')
 attron(A_REVERSE);
 
@@ -20,6 +20,13 @@ vspace(19,23, C_WALL, LINES-1-19); //large left room
 box_space(13,79, C_WALL, 10,20);
 //connecting middle room and bottom left
 vspace(13+10,23+58+2, C_WALL, LINES-1-23);
+
+vspaceb(b,1,15,C_WALL,8);
+spaceb(b,8,1,C_WALL,14);
+spaceb(b,35,23,C_WALL,58);
+vspaceb(b,19,23,C_WALL,LINES-1-19);
+//box_space(13,79, C_WALL, 10,20);
+vspaceb(b,13+10,23+58+2,C_WALL,LINES-1-23);
 
 if(WALL_HL =='y')
 attroff(A_REVERSE);}

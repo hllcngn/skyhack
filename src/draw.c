@@ -2,7 +2,7 @@
 
 void	draw_level(char* clsn, buf1 b){
 draw_entire_floor();
-make_static_walls(clsn);
+make_static_walls(clsn, b);
 make_random_walls();
 draw_enclosing_walls();}
 

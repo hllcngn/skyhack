@@ -26,6 +26,8 @@ gm->clsn = clsn;
 gm->b1 = b;
 game(gm);
 
+save_buf("saves/save1",gm->b1);
+
 free(gm->clsn);
 free(gm->b1.c);
 return 0;}
