@@ -13,6 +13,8 @@ if (!f){
 else{
 	b.h = 0; b.w = 0;
 	load_buf(f, &b);
+	//draw_empty_level();
+	draw_level(clsn, b.w, b);
 	draw_buf(b);}
 
 mvaddch(pos.y,pos.x, C_PLAYER);

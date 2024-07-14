@@ -10,20 +10,22 @@ void	player_move(char k, vect* pos, char *clsn);
 
 //draw.c
 void draw_buf(buf1 b);
-void	draw_level(char *clsn, buf1 b);
-void	draw_empty_level();
+void	draw_level(char* clsn, int w, buf1 b);
+void	draw_empty_level(char* clsn, int w);
 void	draw_entire_floor();
-void	draw_enclosing_walls();
+void	draw_enclosing_walls(char* clsn, int w);
 void	draw_floor_at(vect pos);
 //printbrush.c
 void	space_yx(int y,int x, char c, int n);
 void	space_vect(vect coord, char c, int n);
 void	space_buf_yx(int y,int x, char c, int n, char **cbuf);
-void spaceb(buf1 b, int y, int x, char c, int n);
+void spaceb1(buf1 b, int y, int x, char c, int n);
+void spaceb0(char* b, int w, int y, int x, char c, int n);
 void	space1in2(int y,int x, char c1,char c2, int n);
 void	vspace_yx(int y,int x, char c, int n);
 void	vspace_vect(vect coord, char c, int n);
-void vspaceb(buf1 b, int y, int x, char c, int n);
+void vspaceb1(buf1 b, int y, int x, char c, int n);
+void vspaceb0(char* b, int w, int y, int x, char c, int n);
 void	box_space(int y,int x, char c, int h,int w);
 void	path(vect* pts, int n);
 void	fill_term(char c);

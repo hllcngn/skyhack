@@ -38,9 +38,12 @@ char	*l =cbuf[y];  //y mustn't exceed buf size
 for (int i =0; l[x+i] && i<n; i++)  //x neither
 	l[x+i] =c;}  //hwvr won't overflow if n too large
 //the other solution is to have a buf struct containing size info
-void	spaceb(buf1 b, int y, int x, char c, int n){
+void	spaceb1(buf1 b, int y, int x, char c, int n){
 for (int dx =0; dx <n; dx++)
 	b.c[x+dx +y*b.w] = c;}
+void	spaceb0(char* b, int w, int y, int x, char c, int n){
+for (int dx =0; dx <n; dx++)
+	b[x+dx +y*w] = c;}
 
 void space1in2(int y,int x, char c1,char c2, int n){
  move(y,x); int i =0; for (; i<n; i+=2){addch(c1); addch(c2);}
@@ -52,9 +55,12 @@ void vspace_yx(int y,int x, char c, int n){
 void vspace_vect(vect coord, char c, int n){
  if (n>0) for (int i =0; i<n; i++){move(coord.y+i,coord.x); addch(c);}
  else for (int i =0; i>n; i--){move(coord.y+i,coord.x); addch(c);}}
-void	vspaceb(buf1 b, int y, int x, char c, int n){
+void	vspaceb1(buf1 b, int y, int x, char c, int n){
 for (int dy =0; dy <n; dy++)
 	b.c[x +(y+dy)*b.w] = c;}
+void	vspaceb0(char* b, int w, int y, int x, char c, int n){
+for (int dy =0; dy <n; dy++)
+	b[x +(y+dy)*w] = c;}
 
 
 void	box_space(int y,int x, char c, int h,int w){

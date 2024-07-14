@@ -6,15 +6,15 @@ for (int x =0; x <b.w; x++)
 	if (b.c[x +y*b.w])
 		mvaddch(y, x, b.c[x +y*b.w]);}
 
-void	draw_level(char* clsn, buf1 b){
+void	draw_level(char* clsn, int w, buf1 b){
 draw_entire_floor();
-make_static_walls(clsn, b);
+//make_static_walls(clsn, b);
 make_random_walls();
-draw_enclosing_walls();}
+draw_enclosing_walls(clsn, w);}
 
-void	draw_empty_level(){
+void	draw_empty_level(char* clsn, int w){
 draw_entire_floor();
-draw_enclosing_walls();}
+draw_enclosing_walls(clsn, w);}
 
 void	draw_entire_floor(){
 attron(A_DIM);
@@ -33,7 +33,7 @@ for (int i=0; i<LINES; i+=2){ //even y: / on even x/\ on odd
 	space1in2(i+1,0, '\\','/', COLS);}}
 attroff(A_DIM);}
 
-void	draw_enclosing_walls(){
+void	draw_enclosing_walls(char* clsn, int w){
 if	(OUTWALL_HL =='y')
 attron(A_REVERSE);
 space(0,0, '-', COLS);
@@ -41,7 +41,11 @@ space(LINES-1,0, '-', COLS);
 vspace(0,0, '|', LINES);
 vspace(0,COLS-1, '|', LINES);
 if	(OUTWALL_HL =='y')
-attroff(A_REVERSE);}
+attroff(A_REVERSE);
+spaceb0(clsn, w, 0, 0, 'X', COLS);
+spaceb0(clsn, w, LINES-1, 0, 'X', COLS);
+vspaceb0(clsn, w, 0, 0, 'X', LINES);
+vspaceb0(clsn, w, 0, COLS-1, 'X', LINES);}
 
 void	draw_floor_at(vect pos){
 move(pos.y,pos.x);
