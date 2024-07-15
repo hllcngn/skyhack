@@ -9,7 +9,7 @@ for (int x =0; x <b.w; x++)
 void	draw_level(char* clsn, int w, buf1 b){
 draw_entire_floor();
 //make_static_walls(clsn, b);
-make_random_walls();
+make_random_walls(b);
 draw_enclosing_walls(clsn, w);}
 
 void	draw_empty_level(char* clsn, int w){
@@ -42,6 +42,8 @@ vspace(0,0, '|', LINES);
 vspace(0,COLS-1, '|', LINES);
 if	(OUTWALL_HL =='y')
 attroff(A_REVERSE);
+
+//there could be other ways to handle such collision
 spaceb0(clsn, w, 0, 0, 'X', COLS);
 spaceb0(clsn, w, LINES-1, 0, 'X', COLS);
 vspaceb0(clsn, w, 0, 0, 'X', LINES);

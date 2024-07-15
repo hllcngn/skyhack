@@ -3,7 +3,7 @@
 //unused yet
 void	make_level(char *clsn, buf1 b){
 make_static_walls(clsn, b);
-make_random_walls();}
+make_random_walls(b);}
 
 	// v seems like I could improve this function
 void	make_static_walls(char *clsn, buf1 b){
@@ -34,20 +34,23 @@ if(WALL_HL =='y')
 attroff(A_REVERSE);}
 
 
-void	make_random_walls(){
+void	make_random_walls(buf1 b){
 if(WALL_HL =='y')
 attron(A_REVERSE);
 
 int	minroomsize =4; //= cupboard
-vect	randsize;
-randsize.y =rrange(minroomsize, LINES/3);
-randsize.x =rrange(minroomsize, COLS/4);
-vect	randcoord;
-randcoord.y =rn(LINES-1-randsize.y);
-randcoord.x =rn(COLS-1-randsize.x); //random room
-box_space(randcoord.y,randcoord.x, C_WALL, randsize.y,randsize.x);
+vect	size;
+size.y =rrange(minroomsize, LINES/3);
+size.x =rrange(minroomsize, COLS/4);
+vect	coord;
+coord.y =rn(LINES-1-size.y);
+coord.x =rn(COLS-1-size.x); //random room
+box_space(coord.y,coord.x, C_WALL, size.y,size.x);
 //  todo: not overwrite the enclosing walls
 box_space(0,COLS-15, C_WALL2, 6,15); //test room
+
+boxb1(b, coord.y, coord.x, C_WALL, size.y, size.x);
+boxb1(b, 0, COLS-15, C_WALL2, 6, 15);
 
 if(WALL_HL =='y')
 attroff(A_REVERSE);}

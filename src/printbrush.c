@@ -68,6 +68,11 @@ space(y,x, c, w);
 space(y+h-1,x, c, w);  //non inclusive of the upper limit
 vspace(y,x, c, h);  // ex 13+10=23 but drawing 13-22 (10 total)
 vspace(y,x+w-1, c, h);}
+void boxb1(buf1 b, int y, int x, char c, int h, int w){
+spaceb1(b, y, x, c, w);
+spaceb1(b, y+h-1, x, c, w);
+vspaceb1(b, y, x, c, h);
+vspaceb1(b, y, x+w-1, c, h);}
 
 
 void	path(vect* pts, int n){

@@ -27,6 +27,7 @@ void	vspace_vect(vect coord, char c, int n);
 void vspaceb1(buf1 b, int y, int x, char c, int n);
 void vspaceb0(char* b, int w, int y, int x, char c, int n);
 void	box_space(int y,int x, char c, int h,int w);
+void boxb1(buf1 b, int y, int x, char c, int h, int w);
 void	path(vect* pts, int n);
 void	fill_term(char c);
 void	fill_space(int y,int x, char c, int h,int w);
@@ -36,6 +37,7 @@ void bstroke(buf1 b, vect p1, vect p2, char c);
 
 //main.c
 int	title();
+unsigned int	seed();
 
 //main2.c
 int	main2(GAME* gm);
@@ -43,7 +45,7 @@ int	main2(GAME* gm);
 //generate.c
 void	make_level(char *clsn, buf1 b);
 void	make_static_walls(char* clsn, buf1 b);
-void	make_random_walls();
+void	make_random_walls(buf1 b);
 //rngbrush.c
 int	rn(int max); //0-max inclusive
 int	rrange(int min,int max); //inclusive

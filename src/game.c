@@ -8,7 +8,7 @@ buf1	b1 = gm->b1;
 char k= 0; while(k= getch()){ switch(k){
 case K_QUIT:	return 0;
 
-case ']':clear(); draw_empty_level();
+case ']':clear(); draw_empty_level(clsn, b1.w);
 	//draw some sample rooms
 	//for room size comparison
 	//but maybe that's dependant on floor size
