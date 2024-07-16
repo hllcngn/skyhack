@@ -1,21 +1,23 @@
 #include "h.h"
 
-int main2(GAME* gm){
+int main2(GAME* gm, int new_player){
 vect pos = (vect){18,75};
 char* clsn = malloc(LINES*COLS);
  for(int i= 0;i < LINES*COLS; i++) clsn[i]= ' ';
 buf1 b;
-FILE* f =fopen("saves/save1","r");
-if (!f){
+if (!new_player){
 	b.h = LINES; b.w = COLS;
 	b.c = calloc(b.h*b.w,1);
 	make_level(clsn, b);}
 else{
+	FILE* f =fopen("saves/save1","r");
+	rng_init(f);
 	b.h = 0; b.w = 0;
 	load_buf(f, &b);
 	//draw_empty_level();
 	draw_level(clsn, b.w, b);
-	draw_buf(b);}
+	draw_buf(b);
+	fclose(f);}
 
 mvaddch(pos.y,pos.x, C_PLAYER);
 

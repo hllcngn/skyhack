@@ -3,6 +3,7 @@
 
 #include <ncurses.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <time.h>
 #include <stdio.h>
 
@@ -10,6 +11,7 @@
 #include "symbols.h"
 
 #include "preproc.h"
+#include "prng.h"
 #include "struct.h"
 #include "objects.h"
 #include "prototypes.h"

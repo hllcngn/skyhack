@@ -37,10 +37,10 @@ void bstroke(buf1 b, vect p1, vect p2, char c);
 
 //main.c
 int	title();
-unsigned int	seed();
+void	seed_selection();
 
 //main2.c
-int	main2(GAME* gm);
+int	main2(GAME* gm, int new_player);
 
 //generate.c
 void	make_level(char *clsn, buf1 b);

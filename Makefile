@@ -7,6 +7,7 @@ SRCFILES	= \
 		game.c \
 		generate.c \
 		rngbrush.c \
+		prng.c \
 		printbrush.c \
 		draw.c \
 		player_actions.c \

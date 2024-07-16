@@ -3,7 +3,8 @@
 #include "struct.h"
 
 void save_buf(char* file, buf1 b){
-FILE* f = fopen(file, "w");
+FILE* f = fopen(file, "a");
+fseek(f, 33, SEEK_SET);
 char bufh[12]={0}, *p=bufh+11;
 for (int n=b.h;n;n/=10) *p-- =n%10;
 fwrite(bufh, 1, 12, f);		fputc('\n', f);
