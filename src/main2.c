@@ -1,9 +1,9 @@
 #include "h.h"
 
 int main2(GAME* gm, int new_player){
-vect pos = (vect){18,75};
 char* clsn = malloc(LINES*COLS);
  for(int i= 0;i < LINES*COLS; i++) clsn[i]= ' ';
+
 buf1 b;
 if (!new_player){
 	b.h = LINES; b.w = COLS;
@@ -18,6 +18,8 @@ else{
 	draw_level(clsn, b.w, b);
 	draw_buf(b);
 	fclose(f);}
+
+vect pos = (vect){18,75};
 
 mvaddch(pos.y,pos.x, C_PLAYER);
 

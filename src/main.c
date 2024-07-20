@@ -2,7 +2,6 @@
 
 
 int	main(int ac, char **av){
-srand(time(NULL));
 initscr();
 curs_set(0); noecho(); cbreak();
 refresh();
@@ -76,4 +75,4 @@ for (int j =0; j <32; j++) sd[j] -= 32;
 FILE* f = fopen("saves/save1","w");
 fwrite(sd, 1, 32, f); fputc('\n', f);
 fclose(f);
-seed = realloc(sd, 32);}
+seedc = realloc(sd, 32);}
