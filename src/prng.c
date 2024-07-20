@@ -1,7 +1,8 @@
 #include "h.h"
 
-uint8_t* seedc = NULL;
+uint8_t* seedc	= NULL;
 uint32_t seedui[8] = {0};
+int seedn	= 0;
 
 
 void rng_init(){
@@ -22,5 +23,7 @@ fread(seedc, 1, 32, f);
 fgetc(f);}
 
 int randn(){
-return (rand());
-}
+srand(seedui[seedn]);
+seedui[seedn]++;
+seedn++; if (seedn >=8) seedn =0;
+return (rand());}
