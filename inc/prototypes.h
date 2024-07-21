@@ -57,5 +57,6 @@ char* itos(unsigned int i);
 unsigned int stoi(char* buf);
 void save_buf(FILE* f, buf1 b);
 void load_buf(FILE* f, buf1* b);
+void debug_buf(WINDOW* w, buf1 b);
 
 #endif

@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "controls.h"
 #include "symbols.h"

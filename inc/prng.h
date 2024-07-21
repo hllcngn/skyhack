@@ -8,7 +8,9 @@ extern int	seedn;
 
 void rng_init();
 void load_seed(FILE* f);
+void make_states();
 void save_states(FILE* f);
+void debug_seed(WINDOW* w);
 
 int randn();
 
