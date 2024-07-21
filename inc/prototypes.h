@@ -53,7 +53,9 @@ int	rrange(int min,int max); //inclusive
 
 
 //buf.c
-void save_buf(char* file, buf1 b);
-void load_buf(FILE* file, buf1* b);
+char* itos(unsigned int i);
+unsigned int stoi(char* buf);
+void save_buf(FILE* f, buf1 b);
+void load_buf(FILE* f, buf1* b);
 
 #endif

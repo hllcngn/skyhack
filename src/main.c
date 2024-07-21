@@ -6,7 +6,7 @@ initscr();
 curs_set(0); noecho(); cbreak();
 refresh();
 
-if (title()==-1){ endwin(); return 0; }
+//if (title()==-1){ endwin(); return 0; }
 int new_player = -1;
 if (access("saves/save1", F_OK)){
 	seed_selection();
@@ -75,4 +75,12 @@ for (int j =0; j <32; j++) sd[j] -= 32;
 FILE* f = fopen("saves/save1","w");
 fwrite(sd, 1, 32, f); fputc('\n', f);
 fclose(f);
-seedc = realloc(sd, 32);}
+seedc = realloc(sd, 32);
+
+//because this process would change if sizeof(types) changed
+//from byte-to-byte opearation
+//and it would segv
+for (int i =0; i <8; i++)
+	for (int j =0; j <4; j++)
+		*((uint8_t*)(seedui +i*4 +j)) = seedc[i*4 +j];
+}

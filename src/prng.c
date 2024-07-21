@@ -5,25 +5,29 @@ uint32_t seedui[8] = {0};
 int seedn	= 0;
 
 
-void rng_init(){
-load_seed();
+void rng_init(FILE* f){
+load_seed(f);
 
-//because this process would change if sizeof(types) changed
-//from byte-to-byte opearation
-//and it would segv
-for (int i =0; i <8; i++)
-	for (int j =0; j <4; j++)
-		*(uint8_t*)(seedui +i*4 +j) = seedc[i*4 +j];
-srand(seedui[0]);
-}
-
-void load_seed(FILE* f){
-seedc = malloc(32);
-fread(seedc, 1, 32, f);
-fgetc(f);}
+srand(seedui[0]);}
 
 int randn(){
 srand(seedui[seedn]);
 seedui[seedn]++;
 seedn++; if (seedn >=8) seedn =0;
 return (rand());}
+
+void load_seed(FILE* f){
+seedc = malloc(32);
+fread(seedc, 1, 32, f);				fgetc(f);
+char* buf =malloc(12);
+for (int i =0; i <8; i++){
+	fread(buf, 1, 12, f);			fgetc(f);
+	seedui[i] = stoi(buf);
+}
+}
+
+void save_states(FILE* f){
+fwrite(seedc, 1, 32, f);			fputc('\n', f);
+for (int i =0; i <8; i++){
+	fwrite(itos(seedui[i]), 1, 12, f);	fputc('\n', f);}
+}

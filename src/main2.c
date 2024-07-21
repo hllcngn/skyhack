@@ -14,10 +14,10 @@ else{
 	rng_init(f);
 	b.h = 0; b.w = 0;
 	load_buf(f, &b);
+	fclose(f);
 	//draw_empty_level();
 	draw_level(clsn, b.w, b);
-	draw_buf(b);
-	fclose(f);}
+	draw_buf(b);}
 
 vect pos = (vect){18,75};
 
@@ -38,7 +38,10 @@ gm->clsn = clsn;
 gm->b1 = b;
 game(gm);
 
-save_buf("saves/save1",gm->b1);
+FILE* f = fopen("saves/save1", "w");
+save_states(f);
+save_buf(f,gm->b1);
+fclose(f);
 
 free(gm->clsn);
 free(gm->b1.c);
