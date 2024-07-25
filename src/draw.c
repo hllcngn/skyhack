@@ -8,7 +8,7 @@ for (int x =0; x <b.w; x++)
 
 void	draw_level(char* clsn, int w, buf1 b){
 draw_entire_floor();
-	draw_buf(b);
+draw_buf(b);
 //make_static_walls(clsn, b);
 make_random_walls(b);
 draw_enclosing_walls(clsn, w);}

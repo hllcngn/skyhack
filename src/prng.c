@@ -21,8 +21,9 @@ seedc = malloc(32);
 fread(seedc, 1, 32, f);				fgetc(f);
 char* buf =malloc(12);
 for (int i =0; i <8; i++){
-	fread(buf, 1, 12, f);			fgetc(f);
-	seedui[i] = stoi(buf);}}
+	fread(buf, 1, 12, f);
+	seedui[i] = stoi(buf);			fgetc(f);}
+free(buf);}
 
 void make_states(){
 uint8_t *p = (void*)seedui;

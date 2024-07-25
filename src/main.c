@@ -9,10 +9,11 @@ refresh();
 int new_player = -1;
 if (access("saves/save1", F_OK)){
 	//seed_selection();
-	seedc =malloc(32); strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");
+/**/	seedc =malloc(32);
+	strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");
 	make_states();
-	new_player = 0;}
-
+	new_player = 1;}
+/**/
 GAME* gm= calloc(sizeof(GAME),1);
 main2(gm, new_player);
 free(gm);
@@ -23,20 +24,19 @@ return 0;}
 
 
 
-
 int title(){
 char c; clear();
 printw("hello myskyscraper");
-c= getch();	if(c== 'q')	return -1;
-		else if(c== 27)	return 0;
+c= getch();	if(c== 'q')			return -1;
+		else if(c== 27)			return 0;
 printw("\nthis is a somewhat goofy roguelike side-project");
-c= getch();	if(c== 'q')	return -1;
-		else if(c== 27)	return 0;
+c= getch();	if(c== 'q')			return -1;
+		else if(c== 27)			return 0;
 printw("\nyour terminal is %i x %i, correct?", LINES, COLS);
-c= getch();	if(c== 'q' || c== 'n')	return -1;
-		else if(c== 27)		return 0;
+c= getch();	if(c== 'q' || c== 'n')		return -1;
+		else if(c== 27)			return 0;
 printw("\nthe game will take up the whole window, continue?");
-c= getch();	if(c==27 || c== 'q' || c=='n') return -1;
+c= getch();	if(c==27 || c== 'q' || c=='n')	return -1;
 return 0;}
 
 void seed_selection(){
