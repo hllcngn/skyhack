@@ -5,15 +5,16 @@ unsigned int	seedui[8]	= {0};
 int		seedn		= 0;
 
 
-void rng_init(FILE* f){
-load_seed(f);
-srand(seedui[0]);}
-
 int randn(){
 srand(seedui[seedn]);
 seedui[seedn]++;
 seedn++; if (seedn >=8) seedn =0;
 return (rand());}
+
+
+void rng_init(FILE* f){
+load_seed(f);
+srand(seedui[0]);}
 
 void load_seed(FILE* f){
 seedc = malloc(32);
@@ -33,6 +34,7 @@ void save_states(FILE* f){
 fwrite(seedc, 1, 32, f);			fputc('\n', f);
 for (int i =0; i <8; i++){
 	fwrite(itos(seedui[i]), 1, 12, f);	fputc('\n', f);}}
+
 
 void debug_seed(WINDOW* w){
 wprintw(w, "\n rng states:\n");

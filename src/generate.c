@@ -45,7 +45,7 @@ size.x =rrange(minroomsize, COLS/4);
 vect	coord;
 coord.y =rn(LINES-1-size.y);
 coord.x =rn(COLS-1-size.x); //random room
-box_space(coord.y,coord.x, C_WALL, size.y,size.x);
+box_space(coord.y,coord.x, C_WALL, size.y,size.x); //< prints
 //  todo: not overwrite the enclosing walls
 box_space(0,COLS-15, C_WALL2, 6,15); //test room
 

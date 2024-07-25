@@ -1,6 +1,5 @@
 #include "h.h"
 
-
 int	main(int ac, char **av){
 initscr();
 curs_set(0); noecho(); cbreak();

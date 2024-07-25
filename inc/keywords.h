@@ -7,10 +7,12 @@
 #define POSSESSED	2
 #define SATANIST	3
 
+
 #define CONFEDERATION	1
 
 #define COMMONFOLK	4
 	#define HACKER		5
+#define MERCENARY	6
 
 //???
 

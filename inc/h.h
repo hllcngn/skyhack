@@ -11,11 +11,12 @@
 #include "controls.h"
 #include "symbols.h"
 
-#include "preproc.h"
-#include "prng.h"
 #include "struct.h"
 #include "objects.h"
+#include "preproc.h"
 #include "prototypes.h"
 #include "keywords.h"
+#include "prng.h"
+#include "printbrush.h"
 
 #endif
