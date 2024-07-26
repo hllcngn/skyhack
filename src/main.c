@@ -6,18 +6,19 @@ curs_set(0); noecho(); cbreak();
 refresh();
 
 //if (title()==-1){ endwin(); return 0; }
-int new_player = -1;
+
+int new_player = 0;
 if (access("saves/save1", F_OK)){
 	//seed_selection();
-/**/	seedc =malloc(32);
-	strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");
-	make_states();
+/**/	seedc = malloc(32);
+	strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");	/**/
+	memcpy(states, seedc, 32);	//making states
 	new_player = 1;}
-/**/
-GAME* gm= calloc(sizeof(GAME),1);
-main2(gm, new_player);
-free(gm);
 
+GAME* gm =calloc(sizeof(GAME),1);
+main2(gm, new_player);
+
+free(gm);
 //printw("none of this would have been possible without darkmage"); getch();
 endwin();
 return 0;}
@@ -40,7 +41,7 @@ c= getch();	if(c==27 || c== 'q' || c=='n')	return -1;
 return 0;}
 
 void seed_selection(){
-int i = 0; char c; char* sd = malloc(33); sd[32] = '\0'; clear();
+int i = 0; char c; char* sd = malloc(32); clear();
 printw("seed selection");
 printw("\nLooks like it's your first time playing skyhack!");
 getch();
@@ -70,9 +71,8 @@ while((c=getch())<32 || c>126); addch(c); sd[i] = c; i++;
 while((c=getch())<32 || c>126); addch(c); sd[i] = c; i++;
 while((c=getch())<32 || c>126); addch(c); sd[i] = c; i++;
 printw("\nYour personal seed: %s",sd);
-printw("\npress a key to continue...");
-getch();
-for (int j =0; j <32; j++) sd[j] -= 32;
+printw("\npress a key to continue...");		getch();
+
 FILE* f = fopen("saves/save1","w");
 fwrite(sd, 1, 32, f); fputc('\n', f);
 fclose(f);

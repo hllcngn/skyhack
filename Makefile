@@ -12,7 +12,6 @@ SRCFILES	= \
 		draw.c \
 		player_actions.c \
 		buf.c \
-		tools.c \
 
 OBJFOLDER	= ./obj/
 OBJ		= $(addprefix $(OBJFOLDER), $(SRCFILES:.c=.o))

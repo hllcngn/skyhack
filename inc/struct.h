@@ -5,7 +5,7 @@ typedef struct{
 int	y, x;	} vect;
 
 typedef struct{
-int	h, w;
+uint32_t	h, w;
 char*	c;	}buf1;
 
 #endif

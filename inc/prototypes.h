@@ -2,9 +2,6 @@
 #define PROTOTYPES_H
 #include "h.h"
 
-//tools.c
-char*	itos(unsigned int i);
-unsigned int	stoi(char* buf);
 //buf.c
 void	save_buf(FILE* f, buf1 b);
 void	load_buf(FILE* f, buf1* b);

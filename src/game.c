@@ -1,10 +1,10 @@
 #include "h.h"
 
 int	game(GAME* gm){
-vect	pos= gm->pos;
-char*	clsn= gm->clsn;
-buf1	b1 = gm->b1;
-WINDOW* wd = newwin(8, 15, 0,COLS-15);
+vect	pos =	gm->pos;
+char*	clsn=	gm->clsn;
+buf1	b1  =	gm->b1;
+WINDOW* wd  =	newwin(8, 15, 0,COLS-15);
 
 char k= 0; while(k= getch()){ switch(k){
 case ']':	//draw a random room

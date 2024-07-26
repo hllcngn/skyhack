@@ -3,16 +3,14 @@
 #include <stdint.h>
 
 extern uint8_t*	seedc;
-extern uint32_t	seedui[8];
+extern uint32_t	states[8];
 extern int	seedn;
 
 //prng.c
 int	randn();
 
-void	rng_init();
-void	load_seed(FILE* f);
-void	make_states();
-void	save_states(FILE* f);
+void	load_rng(FILE* f);
+void	save_rng(FILE* f);
 
 void	debug_seed(WINDOW* w);
 
