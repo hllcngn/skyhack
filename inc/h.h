@@ -17,6 +17,6 @@
 #include "prototypes.h"
 #include "keywords.h"
 #include "prng.h"
-#include "printbrush.h"
+#include "brush.h"
 
 #endif

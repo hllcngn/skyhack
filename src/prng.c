@@ -4,6 +4,15 @@ uint8_t*	seedc		= NULL;
 uint32_t	states[8]	= {0};
 int		seedn		= 0;
 
+int	rn(int max){ //0-max inclusive
+int	n;
+do { n =randn() /(RAND_MAX /max+1);
+} while (n >max);
+return n;}
+int	rrange(int min, int max){ //inclusive
+int	n;
+n =rn(max-min) +min;
+return n;}
 
 int randn(){
 srand(states[seedn]);
