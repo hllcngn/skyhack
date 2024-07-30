@@ -15,6 +15,8 @@ void	make_random_walls(buf1 b);
 //main.c
 int	title();
 void	seed_selection();
+int	main_menu();
+int	settings(PLAYER_SETTINGS* ps);
 //main2.c
 int	main2(GAME* gm, int new_player);
 

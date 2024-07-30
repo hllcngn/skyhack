@@ -3,6 +3,10 @@
 #include "struct.h"
 
 typedef struct{
+	int	saving;
+} PLAYER_SETTINGS;
+
+typedef struct{
 	vect	pos;
 	char*	clsn;
 	buf1	b1;

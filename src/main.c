@@ -8,17 +8,29 @@ refresh();
 //if (title()==-1){ endwin(); return 0; }
 
 int new_player = 0;
-if (access("saves/save1", F_OK)){
+if (access("saves/save1", F_OK)){	//new game funct?
 	//seed_selection();
-/**/	seedc = malloc(32);
+/**/	seedc = malloc(32);	//debug
 	strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");	/**/
 	memcpy(states, seedc, 32);	//making states
 	new_player = 1;}
 
+//loading player settings
+PLAYER_SETTINGS* ps = malloc(sizeof(PLAYER_SETTINGS)); ps->saving = 'a';
+
+int quit = 0, menu = 1;
+while (menu && !quit){ switch (main_menu()){
+case 'p':	menu = 0;			break;
+case 's':	if (settings(ps))  quit++;	break;
+case 'q':	quit++;				break;}}
+
+if (!quit){
 GAME* gm =calloc(sizeof(GAME),1);
 main2(gm, new_player);
 
-free(gm);
+free(seedc);
+free(gm);}
+
 //printw("none of this would have been possible without darkmage"); getch();
 endwin();
 return 0;}
@@ -77,3 +89,27 @@ FILE* f = fopen("saves/save1","w");
 fwrite(sd, 1, 32, f); fputc('\n', f);
 fclose(f);
 seedc = realloc(sd, 32);}
+
+int main_menu(){
+clear();
+printw("\tMAIN MENU\n\n");
+printw("o Play (p)\n");
+printw("o Settings (s)\n");
+printw("o Quit (q)\n");
+char c;
+while((c=getch())!='p' && c!='s' && c!='q');
+return c;}
+
+int settings(PLAYER_SETTINGS* ps){
+char c; int menu = 1; clear();
+printw("\t SETTINGS\n\n");
+printw("Autosave (a)\n");
+printw("Player save (p)\n");
+printw("\nback - ESC");
+while (1) {
+while((c=getch())!='q' && c!='a' && c!='p' && c!=27); switch(c){
+case 'q':	return -1;
+case 27:	return 0;
+case 'a':	ps->saving = c;	break;
+case 'p':	ps->saving = c;	break;}}
+return 0;}
