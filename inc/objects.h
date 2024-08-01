@@ -3,7 +3,7 @@
 #include "struct.h"
 
 typedef struct{
-	int	saving;
+	char	saving;
 } PLAYER_SETTINGS;
 
 typedef struct{

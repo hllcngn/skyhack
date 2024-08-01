@@ -2,6 +2,7 @@
 #define CONTROLS_H
 
 #define K_QUIT	27  //any escape key
+#define K_MENU	27
 
 #define K_UP         'w'
 #define K_DOWN       's'

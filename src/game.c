@@ -1,6 +1,6 @@
 #include "h.h"
 
-int	game(GAME* gm){
+int	game(GAME* gm, PLAYER_SETTINGS* ps){
 vect	pos =	gm->pos;
 char*	clsn=	gm->clsn;
 buf1	b1  =	gm->b1;
@@ -15,7 +15,15 @@ case '\\':	//debug
 	debug_seed(wd);
 	wrefresh(wd);			break;
 
-case K_QUIT:				return 0;
+case K_MENU:
+	int quit = 0, menu = 1;
+	while (menu){ switch (game_menu(ps)){
+	case 27:	menu = 0;			break;
+	case 'a':	save_game(gm); 			break;
+	case 's':	if (settings(ps))  return 0;	break;
+	case 'q':	return 0;			break;}}
+	draw_level(clsn, b1.w, b1);
+	mvaddch(pos.y,pos.x, C_PLAYER);
 
 case K_UP:
 case K_DOWN:
@@ -29,3 +37,13 @@ case K_DOWN_RIGHT:
 	player_move(k, &pos, clsn);	break;
 default:				break;}}
 return 0;}
+
+int game_menu(PLAYER_SETTINGS* ps){
+erase();
+printw("\tMENU\n\n");
+if (ps->saving == 'p') printw("o sAve (a)\n");
+printw("o Settings (s)\n");
+printw("o Quit (q)\n");
+char c;
+while((c=getch())!='a' && c!='s' && c!='q' && c!=27);
+return c;}

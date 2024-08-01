@@ -17,11 +17,15 @@ int	title();
 void	seed_selection();
 int	main_menu();
 int	settings(PLAYER_SETTINGS* ps);
+void	save_settings(PLAYER_SETTINGS* ps);
+void	load_settings(PLAYER_SETTINGS* ps);
 //main2.c
-int	main2(GAME* gm, int new_player);
+int	main2(GAME* gm, PLAYER_SETTINGS* ps, int new_player);
+void	save_game(GAME* gm);
 
 //game.c
-int	game(GAME* gm);
+int	game(GAME* gm, PLAYER_SETTINGS* ps);
+int	game_menu(PLAYER_SETTINGS* ps);
 //player_actions.c
 void	player_move(char k, vect* pos, char *clsn);
 //draw.c

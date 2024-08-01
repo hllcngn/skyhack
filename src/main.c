@@ -4,9 +4,9 @@ int	main(int ac, char **av){
 initscr();
 curs_set(0); noecho(); cbreak();
 refresh();
-
 //if (title()==-1){ endwin(); return 0; }
 
+//seed creation for new players
 int new_player = 0;
 if (access("saves/save1", F_OK)){	//new game funct?
 	//seed_selection();
@@ -16,21 +16,27 @@ if (access("saves/save1", F_OK)){	//new game funct?
 	new_player = 1;}
 
 //loading player settings
-PLAYER_SETTINGS* ps = malloc(sizeof(PLAYER_SETTINGS)); ps->saving = 'a';
+PLAYER_SETTINGS* ps = malloc(sizeof(PLAYER_SETTINGS));
+if (access("saves/settings", F_OK)){
+	ps->saving = 'a';
+	save_settings(ps);}
+else	load_settings(ps);
 
-int quit = 0, menu = 1;
+//menus
+int quit = 0;/*, menu = 1;
 while (menu && !quit){ switch (main_menu()){
 case 'p':	menu = 0;			break;
 case 's':	if (settings(ps))  quit++;	break;
-case 'q':	quit++;				break;}}
+case 'q':	quit++;				break;}}*/
 
+//game launch
 if (!quit){
 GAME* gm =calloc(sizeof(GAME),1);
-main2(gm, new_player);
+main2(gm, ps, new_player);
 
 free(seedc);
+free(ps);
 free(gm);}
-
 //printw("none of this would have been possible without darkmage"); getch();
 endwin();
 return 0;}
@@ -38,7 +44,7 @@ return 0;}
 
 
 int title(){
-char c; clear();
+char c; erase();
 printw("hello myskyscraper");
 c= getch();	if(c== 'q')			return -1;
 		else if(c== 27)			return 0;
@@ -53,7 +59,7 @@ c= getch();	if(c==27 || c== 'q' || c=='n')	return -1;
 return 0;}
 
 void seed_selection(){
-int i = 0; char c; char* sd = malloc(32); clear();
+int i = 0; char c; char* sd = malloc(32); erase();
 printw("seed selection");
 printw("\nLooks like it's your first time playing skyhack!");
 getch();
@@ -91,7 +97,7 @@ fclose(f);
 seedc = realloc(sd, 32);}
 
 int main_menu(){
-clear();
+erase();
 printw("\tMAIN MENU\n\n");
 printw("o Play (p)\n");
 printw("o Settings (s)\n");
@@ -101,15 +107,24 @@ while((c=getch())!='p' && c!='s' && c!='q');
 return c;}
 
 int settings(PLAYER_SETTINGS* ps){
-char c; int menu = 1; clear();
+char c; int menu = 1; erase();
 printw("\t SETTINGS\n\n");
 printw("Autosave (a)\n");
 printw("Player save (p)\n");
-printw("\nback - ESC");
-while (1) {
-while((c=getch())!='q' && c!='a' && c!='p' && c!=27); switch(c){
-case 'q':	return -1;
-case 27:	return 0;
+int quit = 0; while (!quit){
+while((c=getch())!=27 && c!='a' && c!='p');
+switch(c){
+case 27:	quit++;		break;
 case 'a':	ps->saving = c;	break;
 case 'p':	ps->saving = c;	break;}}
+save_settings(ps);
 return 0;}
+
+void save_settings(PLAYER_SETTINGS* ps){
+FILE* f = fopen("saves/settings", "w");
+fwrite(&(ps->saving), 1, 1, f); fputc('\n', f);
+fclose(f);}
+void load_settings(PLAYER_SETTINGS* ps){
+FILE* f = fopen("saves/settings", "r");
+fread(&(ps->saving), 1, 1, f); fgetc(f);
+fclose(f);}

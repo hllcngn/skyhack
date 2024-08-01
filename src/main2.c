@@ -1,6 +1,6 @@
 #include "h.h"
 
-int main2(GAME* gm, int new_player){
+int main2(GAME* gm, PLAYER_SETTINGS* ps, int new_player){
 vect pos = (vect){18,75};
 char* clsn = malloc(LINES*COLS);
  for(int i =0;i <LINES*COLS; i++) clsn[i]= ' ';
@@ -30,12 +30,14 @@ path(pts,5);
 gm->pos =	pos;
 gm->clsn=	clsn;
 gm->b1  =	b;
-game(gm);
+game(gm, ps);
 
-FILE* f = fopen("saves/save1", "w");
-save_rng(f);
-save_buf(f,gm->b1);		fclose(f);
-
+if (ps->saving == 'a') save_game(gm);
 free(gm->clsn);
 free(gm->b1.c);
 return 0;}
+
+void save_game(GAME* gm){
+FILE* f = fopen("saves/save1", "w");
+save_rng(f);
+save_buf(f,gm->b1);	fclose(f);}
