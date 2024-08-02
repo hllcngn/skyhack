@@ -68,6 +68,11 @@ void box_space(int y,int x, char c, int h,int w){
  space(y+h-1,x, c, w);  //non inclusive of the upper limit
  vspace(y,x, c, h);  // ex 13+10=23 but drawing 13-22 (10 total)
  vspace(y,x+w-1, c, h);}
+void boxb0(char* b, int width, int y, int x, char c, int h, int w){
+ spaceb0(b, width, y, x, c, w);
+ spaceb0(b, width, y+h-1, x, c, w);
+ vspaceb0(b, width, y, x, c, h);
+ vspaceb0(b, width, y, x+w-1, c, h);}
 void boxb1(buf1 b, int y, int x, char c, int h, int w){
  spaceb1(b, y, x, c, w);
  spaceb1(b, y+h-1, x, c, w);

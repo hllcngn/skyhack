@@ -20,6 +20,7 @@ void stroke(vect p1, vect p2, char c);
 void bstroke(buf1 b, vect p1, vect p2, char c);
 
 void box_space(int y,int x, char c, int h,int w);
+void boxb0(char* b, int width, int y, int x, char c, int h, int w);
 void boxb1(buf1 b, int y, int x, char c, int h, int w);
 
 void path(vect* pts, int n);

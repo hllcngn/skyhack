@@ -2,7 +2,7 @@
 
 void	make_level(char *clsn, buf1 b){
 make_static_walls(clsn, b);
-make_random_walls(b);}
+make_random_walls(clsn, b);}
 
 	// v seems like I could improve this function
 void	make_static_walls(char *clsn, buf1 b){
@@ -33,7 +33,7 @@ if(WALL_HL =='y')
 attroff(A_REVERSE);}
 
 
-void	make_random_walls(buf1 b){
+void	make_random_walls(char* clsn, buf1 b){
 if(WALL_HL =='y')
 attron(A_REVERSE);
 
@@ -47,6 +47,9 @@ coord.x =rn(COLS-1-size.x); //random room
 box_space(coord.y,coord.x, C_WALL, size.y,size.x); //< prints
 //  todo: not overwrite the enclosing walls
 box_space(0,COLS-15, C_WALL2, 6,15); //test room
+
+boxb0(clsn, b.w, coord.y, coord.x, 'X', size.y, size.x);
+boxb0(clsn, b.w, 0, COLS-15, 'X', 6, 15);
 
 boxb1(b, coord.y, coord.x, C_WALL, size.y, size.x);
 boxb1(b, 0, COLS-15, C_WALL2, 6, 15);
