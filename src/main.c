@@ -22,7 +22,7 @@ if (access("saves/settings", F_OK)){
 	save_settings(ps);}
 else	load_settings(ps);
 
-//menus
+//main menu
 int quit = 0;/*, menu = 1;
 while (menu && !quit){ switch (main_menu()){
 case 'p':	menu = 0;			break;

@@ -18,13 +18,10 @@ else{	FILE* f =fopen("saves/save1","r");
 mvaddch(pos.y,pos.x, C_PLAYER);
 
 //= TESTS =
-vect* pts = malloc(sizeof(vect)*5);
-pts[0] = (vect){30,5};
-pts[1] = (vect){20,5};
-pts[2] = (vect){20,18};
-pts[3] = (vect){30,18};
-pts[4] = (vect){30,15};
-path(pts,5);
+draw_empty_level(clsn, b.w);
+vect* p = malloc(sizeof(vect)*12);
+generate_path(p, 12);
+path(p, 12);
 // ====
 
 gm->pos =	pos;

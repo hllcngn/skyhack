@@ -15,15 +15,16 @@ case '\\':	//debug
 	debug_seed(wd);
 	wrefresh(wd);			break;
 
-case K_MENU:
-	int quit = 0, menu = 1;
+case K_MENU:	//game menu
+	return 0;
+/*	int quit = 0, menu = 1;
 	while (menu){ switch (game_menu(ps)){
 	case 27:	menu = 0;			break;
 	case 'a':	save_game(gm); 			break;
 	case 's':	if (settings(ps))  return 0;	break;
 	case 'q':	return 0;			break;}}
 	draw_level(clsn, b1.w, b1);
-	mvaddch(pos.y,pos.x, C_PLAYER);
+	mvaddch(pos.y,pos.x, C_PLAYER);		*/
 
 case K_UP:
 case K_DOWN:

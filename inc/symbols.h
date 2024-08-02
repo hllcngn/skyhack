@@ -5,8 +5,8 @@
 
 #define C_PATH		'.'	// ./-/
 
-#define FLOOR_TYPE	's'	// s/p
-#define PAVING		'+'	// |/+//
+#define FLOOR_TYPE	'p'	// s/p
+#define PAVING		'|'	// |/+//
 #define C_FLOOR		'.'
 
 #define OUTWALL_HL	'n'	// y/n

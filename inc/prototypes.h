@@ -11,6 +11,7 @@ void	debug_buf(WINDOW* w, buf1 b);
 void	make_level(char *clsn, buf1 b);
 void	make_static_walls(char* clsn, buf1 b);
 void	make_random_walls(buf1 b);
+void	generate_path(vect* p, int n);
 
 //main.c
 int	title();
