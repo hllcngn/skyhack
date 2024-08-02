@@ -6,8 +6,11 @@ int		seedn		= 0;
 
 int	rn(int max){ //0-max inclusive
 int	n;
+/*
 do { n =randn() /(RAND_MAX /max+1);
 } while (n >max);
+*/
+n = randn()%(max+1);
 return n;}
 int	rrange(int min, int max){ //inclusive
 int	n;

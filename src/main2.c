@@ -13,7 +13,7 @@ else{	FILE* f =fopen("saves/save1","r");
 	load_rng(f);
 	srand(states[0]);
 	load_buf(f, &b);	fclose(f);
-	draw_level(clsn, b.w, b);}
+	draw_level(clsn, b);}
 
 mvaddch(pos.y,pos.x, C_PLAYER);
 
@@ -22,6 +22,9 @@ draw_empty_level(clsn, b.w);
 vect* p = malloc(sizeof(vect)*12);
 generate_path(p, 12);
 path(p, 12);
+build_from_path(clsn, b.w, p, 12);
+draw_clsn(clsn, b.w, b.h);
+refresh();
 // ====
 
 gm->pos =	pos;

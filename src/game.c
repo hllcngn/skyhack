@@ -23,7 +23,7 @@ case K_MENU:	//game menu
 	case 'a':	save_game(gm); 			break;
 	case 's':	if (settings(ps))  return 0;	break;
 	case 'q':	return 0;			break;}}
-	draw_level(clsn, b1.w, b1);
+	draw_level(clsn, b1);
 	mvaddch(pos.y,pos.x, C_PLAYER);		*/
 
 case K_UP:

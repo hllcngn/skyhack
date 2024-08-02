@@ -6,12 +6,13 @@ for (int x =0; x <b.w; x++)
 	if (b.c[x +y*b.w])
 		mvaddch(y, x, b.c[x +y*b.w]);}
 
-void	draw_level(char* clsn, int w, buf1 b){
+void	draw_level(char* clsn, buf1 b){
 draw_entire_floor();
 draw_buf(b);
+draw_clsn(clsn, b.w, b.h);
 //make_static_walls(clsn, b);
 make_random_walls(clsn, b);
-draw_enclosing_walls(clsn, w);}
+draw_enclosing_walls(clsn, b.w);}
 
 void	draw_empty_level(char* clsn, int w){
 draw_entire_floor();
@@ -49,6 +50,12 @@ spaceb0(clsn, w, 0, 0, 'X', COLS);
 spaceb0(clsn, w, LINES-1, 0, 'X', COLS);
 vspaceb0(clsn, w, 0, 0, 'X', LINES);
 vspaceb0(clsn, w, 0, COLS-1, 'X', LINES);}
+
+
+void	draw_clsn(char* clsn, int w, int h){
+for (int i =0; i <w*h; i++)
+	if (clsn[i] == 'D')
+		mvaddch(i/w, i%w, 'D');}
 
 void	draw_floor_at(vect pos){
 move(pos.y,pos.x);

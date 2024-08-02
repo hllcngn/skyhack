@@ -68,3 +68,10 @@ for (int i =2; i <n; i++){
 	else
 		p[i] = (vect){p[i-1].y, rn(COLS-1)};
 }}
+
+void	build_from_path(char* clsn, int w, vect* p, int n){
+if (p[0].x == p[1].x){
+	int y =rrange(p[1].y, p[0].y);
+	clsn[y*w + p[0].x] = 'D';
+}
+}

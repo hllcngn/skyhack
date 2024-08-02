@@ -12,6 +12,7 @@ void	make_level(char *clsn, buf1 b);
 void	make_static_walls(char* clsn, buf1 b);
 void	make_random_walls(char* clsn, buf1 b);
 void	generate_path(vect* p, int n);
+void	build_from_path(char* clsn, int w, vect* p, int n);
 
 //main.c
 int	title();
@@ -31,9 +32,10 @@ int	game_menu(PLAYER_SETTINGS* ps);
 void	player_move(char k, vect* pos, char *clsn);
 //draw.c
 void	draw_buf(buf1 b);
-void	draw_level(char* clsn, int w, buf1 b);
+void	draw_level(char* clsn, buf1 b);
 void	draw_empty_level(char* clsn, int w);
 void	draw_entire_floor();
 void	draw_enclosing_walls(char* clsn, int w);
+void	draw_clsn(char* clsn, int w, int h);
 void	draw_floor_at(vect pos);
 #endif
