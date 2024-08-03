@@ -8,9 +8,9 @@ refresh();
 
 //seed creation for new players
 int new_player = 0;
+state = malloc(4*8); //must be initialized in case not mood
 if (access("saves/save1", F_OK)){	//new game funct?
 	//seed_selection();
-	state = malloc(4*8); //must be initialized in case mood
 /**/	seedc = malloc(32);	//debug
 	strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");	/**/
 	memcpy(state, seedc, 32);	//making states
