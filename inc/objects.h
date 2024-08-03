@@ -4,6 +4,7 @@
 
 typedef struct{
 	char	saving;
+	char	mood;
 } PLAYER_SETTINGS;
 
 typedef struct{

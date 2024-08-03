@@ -10,15 +10,17 @@ refresh();
 int new_player = 0;
 if (access("saves/save1", F_OK)){	//new game funct?
 	//seed_selection();
+	state = malloc(4*8); //must be initialized in case mood
 /**/	seedc = malloc(32);	//debug
 	strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");	/**/
-	memcpy(states, seedc, 32);	//making states
+	memcpy(state, seedc, 32);	//making states
 	new_player = 1;}
 
 //loading player settings
 PLAYER_SETTINGS* ps = malloc(sizeof(PLAYER_SETTINGS));
 if (access("saves/settings", F_OK)){
 	ps->saving = 'a';
+	ps->mood = '0';
 	save_settings(ps);}
 else	load_settings(ps);
 
@@ -28,9 +30,13 @@ while (menu && !quit){ switch (main_menu()){
 case 'p':	menu = 0;			break;
 case 's':	if (settings(ps))  quit++;	break;
 case 'q':	quit++;				break;}}*/
+if (!quit){
+
+//mood setting
+if (ps->mood == '1')
+	mood_setting();
 
 //game launch
-if (!quit){
 GAME* gm =calloc(sizeof(GAME),1);
 main2(gm, ps, new_player);
 
@@ -109,22 +115,42 @@ return c;}
 int settings(PLAYER_SETTINGS* ps){
 char c; int menu = 1; erase();
 printw("\t SETTINGS\n\n");
-printw("Autosave (a)\n");
-printw("Player save (p)\n");
+printw("Autosave (a) - Player save (p)\n");
+printw("Mood - off (0) - on (1)\n");
 int quit = 0; while (!quit){
-while((c=getch())!=27 && c!='a' && c!='p');
+while((c=getch())!=27	&& c!='a' && c!='p'
+			&& c!='0' && c!='1');
 switch(c){
 case 27:	quit++;		break;
 case 'a':	ps->saving = c;	break;
-case 'p':	ps->saving = c;	break;}}
+case 'p':	ps->saving = c;	break;
+case '0':	ps->mood = c;	break;
+case '1':	ps->mood = c;	break;}}
 save_settings(ps);
 return 0;}
 
 void save_settings(PLAYER_SETTINGS* ps){
 FILE* f = fopen("saves/settings", "w");
-fwrite(&(ps->saving), 1, 1, f); fputc('\n', f);
+fwrite(&(ps->saving), 1, 1, f);	fputc('\n', f);
+fwrite(&(ps->mood), 1, 1, f);	fputc('\n', f);
 fclose(f);}
 void load_settings(PLAYER_SETTINGS* ps){
 FILE* f = fopen("saves/settings", "r");
-fread(&(ps->saving), 1, 1, f); fgetc(f);
+fread(&(ps->saving), 1, 1, f);	fgetc(f);
+fread(&(ps->mood), 1, 1, f);	fgetc(f);
 fclose(f);}
+
+void mood_setting(){
+stateN = 9;
+state = realloc(state, 4*9);
+erase();
+printw("- you're seeing this screen because you've enabled moody prng -\n");
+printw("\nPlease select your present mood in within 4 characters:\n");
+printw("> ");
+char c; int i = 0; uint8_t j[4];
+while((c=getch())<32 || c>126); addch(c); j[i] = c; i++;
+while((c=getch())<32 || c>126); addch(c); j[i] = c; i++;
+while((c=getch())<32 || c>126); addch(c); j[i] = c; i++;
+while((c=getch())<32 || c>126); addch(c); j[i] = c; i++;
+memcpy(&(state[8]), j, 4);
+printw("\n\npress a key to continue...");		getch();}

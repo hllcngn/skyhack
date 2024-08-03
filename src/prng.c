@@ -1,8 +1,9 @@
 #include "h.h"
 
 uint8_t*	seedc		= NULL;
-uint32_t	states[8]	= {0};
-int		seedn		= 0;
+int		stateN		= 8;
+uint32_t*	state		= NULL;
+int		staten		= 0;
 
 int	rn(int max){ //0-max inclusive
 int	n;
@@ -17,10 +18,11 @@ int	n;
 n =rn(max-min) +min;
 return n;}
 
+
 int randn(){
-srand(states[seedn]);
-states[seedn]++;
-seedn++; if (seedn >=8) seedn =0;
+srand(state[staten]);
+state[staten]++;
+staten++; if (staten >=stateN) staten =0;
 return (rand());}
 
 
@@ -28,12 +30,12 @@ void load_rng(FILE* f){
 seedc = malloc(32);
 fread(seedc, 1, 32, f);				fgetc(f);
 for (int i =0; i <8; i++){
-	fread(&(states[i]), 1, 4, f);		fgetc(f);}}
+	fread(&(state[i]), 4, 1, f);		fgetc(f);}}
 
 void save_rng(FILE* f){
 fwrite(seedc, 1, 32, f);			fputc('\n', f);
 for (int i =0; i <8; i++){
-	fwrite(&(states[i]), 1, 4, f);		fputc('\n', f);}}
+	fwrite(&(state[i]), 4, 1, f);		fputc('\n', f);}}
 
 
 void debug_seed(WINDOW* w){
@@ -43,8 +45,9 @@ for (int i =0; i <8; i++){	//as numbers
 	wprintw(w, "  %i\n", seedui[i]);}
 */
 /**/
-uint8_t *p = (uint8_t*)states;	//as letters
-for (int i =0; i <8; i++){
+uint8_t *p = (uint8_t*)state;	//as letters
+wprintw(w, "%i\n", stateN);
+for (int i =0; i <stateN; i++){
 	waddch(w, ' ');
 	for (int j =0; j <4; j++)
 		waddch(w, p[i*4 +j]);

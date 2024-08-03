@@ -2,9 +2,10 @@
 #define PRNG_H
 #include <stdint.h>
 
-extern uint8_t*	seedc;
-extern uint32_t	states[8];
-extern int	seedn;
+extern uint8_t*		seedc;
+extern int		stateN;
+extern uint32_t*	state;
+extern int		staten;
 
 //prng.c
 int	rn(int max); //0-max inclusive

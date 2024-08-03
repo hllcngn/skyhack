@@ -21,6 +21,7 @@ int	main_menu();
 int	settings(PLAYER_SETTINGS* ps);
 void	save_settings(PLAYER_SETTINGS* ps);
 void	load_settings(PLAYER_SETTINGS* ps);
+void	mood_setting();
 //main2.c
 int	main2(GAME* gm, PLAYER_SETTINGS* ps, int new_player);
 void	save_game(GAME* gm);

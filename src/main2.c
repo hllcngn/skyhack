@@ -11,7 +11,7 @@ if (new_player){
 	make_level(clsn, b);}
 else{	FILE* f =fopen("saves/save1","r");
 	load_rng(f);
-	srand(states[0]);
+	srand(state[0]);
 	load_buf(f, &b);	fclose(f);
 	draw_level(clsn, b);}
 
