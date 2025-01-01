@@ -6,15 +6,16 @@ curs_set(0); noecho(); cbreak();
 refresh();
 //if (title()==-1){ endwin(); return 0; }
 
+
 //seed creation for new players
 int new_player = 0;
 state = malloc(4*8); //must be initialized in case not mood
 if (access("saves/save1", F_OK)){	//new game funct?
+	new_player = 1;
 	//seed_selection();
 /**/	seedc = malloc(32);	//debug
 	strcpy(seedc,"#@@vhtttjudasmmmmhhgtyzgggp;;;;;");	/**/
-	memcpy(state, seedc, 32);	//making states
-	new_player = 1;}
+	memcpy(state, seedc, 32);}	//making states
 
 //loading player settings
 PLAYER_SETTINGS* ps = malloc(sizeof(PLAYER_SETTINGS));
@@ -24,14 +25,15 @@ if (access("saves/settings", F_OK)){
 	save_settings(ps);}
 else	load_settings(ps);
 
+
 //main menu
 int quit = 0;/*, menu = 1;
 while (menu && !quit){ switch (main_menu()){
 case 'p':	menu = 0;			break;
 case 's':	if (settings(ps))  quit++;	break;
 case 'q':	quit++;				break;}}*/
-if (!quit){
 
+if (!quit){
 //mood setting
 if (ps->mood == '1')
 	mood_setting();
@@ -63,6 +65,7 @@ c= getch();	if(c== 'q' || c== 'n')		return -1;
 printw("\nthe game will take up the whole window, continue?");
 c= getch();	if(c==27 || c== 'q' || c=='n')	return -1;
 return 0;}
+
 
 void seed_selection(){
 int i = 0; char c; char* sd = malloc(32); erase();
@@ -102,6 +105,7 @@ fwrite(sd, 1, 32, f); fputc('\n', f);
 fclose(f);
 seedc = realloc(sd, 32);}
 
+
 int main_menu(){
 erase();
 printw("\tMAIN MENU\n\n");
@@ -111,6 +115,7 @@ printw("o Quit (q)\n");
 char c;
 while((c=getch())!='p' && c!='s' && c!='q');
 return c;}
+
 
 int settings(PLAYER_SETTINGS* ps){
 char c; int menu = 1; erase();
@@ -129,16 +134,20 @@ case '1':	ps->mood = c;	break;}}
 save_settings(ps);
 return 0;}
 
+
 void save_settings(PLAYER_SETTINGS* ps){
+mkdir("saves", 0700); //this can fail if we don't have the right permissions
 FILE* f = fopen("saves/settings", "w");
 fwrite(&(ps->saving), 1, 1, f);	fputc('\n', f);
 fwrite(&(ps->mood), 1, 1, f);	fputc('\n', f);
 fclose(f);}
+
 void load_settings(PLAYER_SETTINGS* ps){
 FILE* f = fopen("saves/settings", "r");
 fread(&(ps->saving), 1, 1, f);	fgetc(f);
 fread(&(ps->mood), 1, 1, f);	fgetc(f);
 fclose(f);}
+
 
 void mood_setting(){
 stateN = 9;

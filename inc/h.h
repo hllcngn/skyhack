@@ -1,12 +1,13 @@
 #ifndef H_H
 #define H_H
 
-#include <ncurses.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <ncurses.h>
 #include <time.h>
-#include <stdio.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <stdio.h>
 
 #include "controls.h"
 #include "symbols.h"

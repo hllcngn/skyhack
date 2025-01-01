@@ -1,5 +1,6 @@
 #include "h.h"
 
+
 int main2(GAME* gm, PLAYER_SETTINGS* ps, int new_player){
 vect pos = (vect){18,75};
 char* clsn = malloc(LINES*COLS);
@@ -10,8 +11,7 @@ if (new_player){
 	b.c = calloc(b.h*b.w, 1);
 	make_level(clsn, b);}
 else{	FILE* f =fopen("saves/save1","r");
-	load_rng(f);
-	srand(state[0]);
+	load_rng(f);		srand(state[0]);
 	load_buf(f, &b);	fclose(f);
 	draw_level(clsn, b);}
 
