@@ -4,7 +4,7 @@ int	main(int ac, char **av){
 initscr();
 curs_set(0); noecho(); cbreak();
 refresh();
-//if (title()==-1){ endwin(); return 0; }
+if (title()==-1){ endwin(); return 0; }
 
 
 //seed creation for new players

@@ -1,0 +1,19 @@
+PROJECT REBOOT 2 - TODO
+
+-> old title() function
+
+-> dungeon dynamics
+\-> elevator(s)
+this is at the heart of the game
+not that random generation isn't important
+\-> dungeon structure
+\-> skyscraper size
+    (h+w)/2/2*8/4.5
+
+-> super maintainable code
+-> debug solution
+
+-> player profile
+-> inventory
+
+-> fun
