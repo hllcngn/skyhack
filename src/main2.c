@@ -4,8 +4,11 @@
 int	main2(void){
 
 int re;
+DUNGEON *dungeon;
 
-re = game();
+dungeon = dungeon_new();
+re = game(dungeon);
 
+dungeon_free(dungeon);
 return re;
 }
