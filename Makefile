@@ -2,15 +2,15 @@ NAME		= skyhack
 CC		= /usr/bin/gcc
 SRCFOLDER	= ./src/
 SRCFILES	= \
+		ncurses.c \
 		main.c \
 		main2.c \
 		game.c \
-		generate.c \
-		prng.c \
-		brush.c \
-		draw.c \
-		player_actions.c \
-		buf.c \
+		character.c \
+		player.c \
+		dungeon.c \
+		floor.c \
+
 
 OBJFOLDER	= ./obj/
 OBJ		= $(addprefix $(OBJFOLDER), $(SRCFILES:.c=.o))
@@ -25,11 +25,8 @@ skyhack:	$(OBJ)
 $(OBJFOLDER)%.o:	$(SRCFOLDER)%.c
 	$(CC) -c $^ -o $@ -I$(INCFOLDER)
 
-hello:
-	$(CC) ./src/hello.c -o hello -lncurses
-
 clean:
 	rm -rf obj
 fclean:	clean
-	rm -f skyhack.exe skyhack.exe.stackdump hello.exe
+	rm -f skyhack
 re:	fclean all

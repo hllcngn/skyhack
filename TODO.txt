@@ -14,6 +14,7 @@ not that random generation isn't important
 -> debug solution
 
 -> player profile
+\-> entity profile
 -> inventory
 
 -> fun
