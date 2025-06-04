@@ -3,6 +3,8 @@
 #include "list.h"
 #include <stdlib.h>
 
+typedef struct{ int y, x; } vect;
+
 typedef struct{
 	int	floorn;
 	int	h, w;
@@ -22,7 +24,7 @@ typedef struct{
 } CHARACTER;
 
 int	main2(void);
-int	game(DUNGEON *dungeon);
+int	game(DUNGEON *dungeon, CHARACTER *player);
 
 DUNGEON	*dungeon_new(int h, int w);
 void	dungeon_free(DUNGEON *dungeon);
@@ -31,5 +33,12 @@ void	floor_free(FLOOR *floor);
 
 CHARACTER	*character_new(int y, int x, char c);
 void	character_free(CHARACTER *character);
+void	character_movement(FLOOR *floor, CHARACTER *character, vect v);
+
+// logic.c
+vect	get_move_vector(char c);
+
+// mechanic.c
+int	check_collision(FLOOR *floor, int y, int x);
 
 #endif

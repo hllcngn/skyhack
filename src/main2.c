@@ -10,7 +10,7 @@ dungeon = dungeon_new(ncurses_get_lines()-2, ncurses_get_cols());
 player = character_new(dungeon->h/2, dungeon->w/2, 'G');
 list_add(&(dungeon->floor[0]->characters), player);
 
-re = game(dungeon);
+re = game(dungeon, player);
 
 dungeon_free(dungeon);
 return re;}

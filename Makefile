@@ -11,6 +11,8 @@ SRCFILES	= \
 		player.c \
 		dungeon.c \
 		floor.c \
+		logic.c \
+		mechanic.c \
 
 
 OBJFOLDER	= ./obj/
