@@ -8,9 +8,9 @@ int floorn = 0;
 while (q){
 
 ncurses_display(dungeon->floor[floorn]);
+
 getch();
 q = 0;
 }
 
-return EXIT_SUCCESS;
-}
+return EXIT_SUCCESS;}

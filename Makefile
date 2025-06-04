@@ -2,6 +2,7 @@ NAME		= skyhack
 CC		= /usr/bin/gcc
 SRCFOLDER	= ./src/
 SRCFILES	= \
+		list.c \
 		ncurses.c \
 		main.c \
 		main2.c \
