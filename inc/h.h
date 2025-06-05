@@ -2,6 +2,7 @@
 #define H_H
 #include "list.h"
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct{ int y, x; } vect;
 
@@ -28,6 +29,7 @@ int	game(DUNGEON *dungeon, CHARACTER *player);
 
 DUNGEON	*dungeon_new(int h, int w);
 void	dungeon_free(DUNGEON *dungeon);
+void	dungeon_add_stairs(DUNGEON *dungeon);
 FLOOR	*floor_new(int floorn, int h, int w);
 void	floor_free(FLOOR *floor);
 

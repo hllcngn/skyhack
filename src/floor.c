@@ -5,6 +5,8 @@ FLOOR *new = malloc(sizeof(FLOOR));
 new->floorn = floorn;
 new->h = h;
 new->w = w;
+
+// floor & outside walls
 new->buf = malloc(sizeof(char*) * new->h);
 for (int i = 0; i < new->h; i++)
 	new->buf[i] = malloc(new->w);
@@ -16,6 +18,7 @@ for (int i = 1; i < new->h-1; i++){
 	new->buf[i][new->w-1] = 'H';
 	for (int j = 1; j < new->w-1; j++)
 		new->buf[i][j] = '.';}
+
 new->characters = NULL;
 return new;}
 

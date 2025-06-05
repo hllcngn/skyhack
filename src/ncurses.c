@@ -17,12 +17,12 @@ endwin();}
 int	ncurses_get_lines(void){return LINES;}
 int	ncurses_get_cols(void){return COLS;}
 
-void	ncurses_uitop_refresh(void){
-mvwprintw(uitop, 0, 0, "hello");
+void	ncurses_uitop_refresh(int floorn){
+mvwprintw(uitop, 0, COLS-10, "Floor#%i", floorn+1);
 wrefresh(uitop);}
 
 void	ncurses_uibot_refresh(void){
-mvwprintw(uibot, 0, 0, "bottom");
+mvwprintw(uibot, 0, 0, "ui bottom");
 wrefresh(uibot);}
 
 void	ncurses_game_refresh(FLOOR *floor){
@@ -39,6 +39,6 @@ mvwaddch(gwin,  ((CHARACTER*)(list->item))->y,
 		((CHARACTER*)(list->item))->c);}
 
 void	ncurses_display(FLOOR *floor){
-ncurses_uitop_refresh();
+ncurses_uitop_refresh(floor->floorn);
 ncurses_uibot_refresh();
 ncurses_game_refresh(floor);}

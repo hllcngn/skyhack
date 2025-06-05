@@ -11,6 +11,7 @@ struct list{
 List	*list_new(void *item);
 void	list_push_front(List **list, List *new);
 void	list_add(List **list, void *item);
+List	*list_pop(List **list, void *item);
 void	list_free(List *list);
 
 void	list_do(List *list, void (*f)(List*));

@@ -2,6 +2,7 @@
 #include "myncurses.h"
 
 int	main(int ac, char **av){
+srand(time(NULL));
 ncurses_init();
 
 int re;
