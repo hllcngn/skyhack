@@ -1,5 +1,8 @@
 #include "myncurses.h"
 
+int	ncurses_get_lines(void){return LINES;}
+int	ncurses_get_cols(void){return COLS;}
+
 void	ncurses_init(void){
 initscr(); noecho(); cbreak();
 curs_set(0); refresh();
@@ -14,11 +17,15 @@ delwin(uibot);
 delwin(gwin);
 endwin();}
 
-int	ncurses_get_lines(void){return LINES;}
-int	ncurses_get_cols(void){return COLS;}
+void	ncurses_display(TIME *time, FLOOR *floor){
+ncurses_uitop_refresh(time, floor->floorn);
+ncurses_uibot_refresh();
+ncurses_game_refresh(floor);}
 
-void	ncurses_uitop_refresh(int floorn){
-mvwprintw(uitop, 0, COLS-10, "Floor#%i", floorn+1);
+void	ncurses_uitop_refresh(TIME *time, int floorn){
+mvwprintw(uitop, 0, COLS-12-10, "Floor#%i", floorn+1);
+mvwprintw(uitop, 0, COLS-12, "%3i:%2i:%2i:%2i",
+		time->d, time->h, time->m, time->s);
 wrefresh(uitop);}
 
 void	ncurses_uibot_refresh(void){
@@ -37,8 +44,3 @@ void	ncurses_draw_character(List *list){
 mvwaddch(gwin,  ((CHARACTER*)(list->item))->y,
 		((CHARACTER*)(list->item))->x,
 		((CHARACTER*)(list->item))->c);}
-
-void	ncurses_display(FLOOR *floor){
-ncurses_uitop_refresh(floor->floorn);
-ncurses_uibot_refresh();
-ncurses_game_refresh(floor);}

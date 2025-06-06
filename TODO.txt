@@ -18,3 +18,16 @@ not that random generation isn't important
 -> inventory
 
 -> fun
+
+
+#elevators
+. elevator position in floor (/!\ collision (with stairs))
+. floor range (bonus: odd/even floors, skipping floors)
+. what floor it's at
+. calling the elevator
+. elevator moves down
+. *ding* elevator arrives
+. getting inside
+. selecting destination floor
+. waiting till at destination
+. getting out

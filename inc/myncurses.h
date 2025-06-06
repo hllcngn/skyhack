@@ -11,10 +11,10 @@ void	ncurses_init(void);
 void	ncurses_end(void);
 int	ncurses_get_lines(void);
 int	ncurses_get_cols(void);
-void	ncurses_uitop_refresh(int floorn);
+void	ncurses_uitop_refresh(TIME* time, int floorn);
 void	ncurses_uibot_refresh(void);
 void	ncurses_game_refresh(FLOOR *floor);
-void	ncurses_display(FLOOR *floor);
+void	ncurses_display(TIME *time, FLOOR *floor);
 
 void	ncurses_draw_character(List *list);
 

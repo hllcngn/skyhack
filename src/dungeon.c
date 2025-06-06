@@ -8,6 +8,7 @@ new->floor = malloc(sizeof(FLOOR*) * new->nfloor);
 for (int i = 0; i < new->nfloor; i++)
 	new->floor[i] = floor_new(i, new->h, new->w);
 dungeon_add_stairs(new);
+dungeon_add_elevators(new);
 return new;}
 
 void	dungeon_free(DUNGEON *dungeon){
@@ -22,3 +23,15 @@ for (int i = 0; i < dungeon->nfloor-1; i++){
 	int stairsx = rand()%(dungeon->w-2)+1;
 	dungeon->floor[i]->buf[stairsy][stairsx] = '>';
 	dungeon->floor[i+1]->buf[stairsy][stairsx] = '<';}}
+
+void	dungeon_add_elevators(DUNGEON *dungeon){
+// TODO check for collision with stairs
+int elevy = rand()%(dungeon->h-4)+2;
+int elevx = rand()%(dungeon->w-6)+3;
+for (int i = 0; i < dungeon->nfloor-1; i++){
+	dungeon->floor[i]->buf[elevy-1][elevx-1] = '_';
+	dungeon->floor[i]->buf[elevy-1][elevx] = '_';
+	dungeon->floor[i]->buf[elevy-1][elevx+1] = '_';
+	dungeon->floor[i]->buf[elevy][elevx-1] = '|';
+	dungeon->floor[i]->buf[elevy][elevx] = 'X';
+	dungeon->floor[i]->buf[elevy][elevx+1] = '|';}}

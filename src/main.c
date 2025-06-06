@@ -7,7 +7,7 @@ ncurses_init();
 
 int re;
 
-re= main2();
+re = main2();
 
 ncurses_end();
 return re;}
