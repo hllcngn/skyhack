@@ -9,13 +9,17 @@ for (int i = 0; i < new->nfloor; i++)
 	new->floor[i] = floor_new(i, new->h, new->w);
 dungeon_add_stairs(new);
 dungeon_add_elevators(new);
+new->floorn = 0;
+new->currfloor = new->floor[0];
 return new;}
 
 void	dungeon_free(DUNGEON *dungeon){
 for (int i = 0; i < dungeon->nfloor; i++)
 	floor_free(dungeon->floor[i]);
 free(dungeon->floor);
+free(dungeon->elevator);
 free(dungeon);}
+
 
 void	dungeon_add_stairs(DUNGEON *dungeon){
 for (int i = 0; i < dungeon->nfloor-1; i++){
@@ -24,14 +28,33 @@ for (int i = 0; i < dungeon->nfloor-1; i++){
 	dungeon->floor[i]->buf[stairsy][stairsx] = '>';
 	dungeon->floor[i+1]->buf[stairsy][stairsx] = '<';}}
 
-void	dungeon_add_elevators(DUNGEON *dungeon){
-// TODO check for collision with stairs
-int elevy = rand()%(dungeon->h-4)+2;
-int elevx = rand()%(dungeon->w-6)+3;
+void	dungeon_add_elevators(DUNGEON *dungeon){// TODO check for collision with stairs
+int elevy = rand()%(dungeon->h-2-4)+1;
+int elevx = rand()%(dungeon->w-2-4)+1;
+int elevfloorn = rand()%dungeon->nfloor;
+dungeon->elevator = elevator_new(elevy, elevx, elevfloorn);
 for (int i = 0; i < dungeon->nfloor-1; i++){
-	dungeon->floor[i]->buf[elevy-1][elevx-1] = '_';
-	dungeon->floor[i]->buf[elevy-1][elevx] = '_';
-	dungeon->floor[i]->buf[elevy-1][elevx+1] = '_';
-	dungeon->floor[i]->buf[elevy][elevx-1] = '|';
-	dungeon->floor[i]->buf[elevy][elevx] = 'X';
-	dungeon->floor[i]->buf[elevy][elevx+1] = '|';}}
+	strncpy(dungeon->floor[i]->buf[elevy]+elevx,   "_____", 5);
+	strncpy(dungeon->floor[i]->buf[elevy+1]+elevx, "|   |", 5);
+	strncpy(dungeon->floor[i]->buf[elevy+2]+elevx, "|   |", 5);
+	strncpy(dungeon->floor[i]->buf[elevy+3]+elevx, "|[I]|", 5);}}
+
+ELEVATOR	*elevator_new(int y, int x, int floorn){
+ELEVATOR *new = malloc(sizeof(ELEVATOR));
+new->floorn = floorn;
+new->door_open = 0;
+new->floor = malloc(sizeof(FLOOR));
+new->floor->floorn = -1;
+new->floor->h = 4;
+new->floor->w = 5;
+new->floor->y = y;
+new->floor->x = x;
+new->floor->buf = malloc(sizeof(char*)*new->floor->h);
+for (int i = 0; i < new->floor->h; i++)
+	new->floor->buf[i] = malloc(new->floor->w);
+strncpy(new->floor->buf[0], "_____", 5);
+strncpy(new->floor->buf[1], "|...|", 5);
+strncpy(new->floor->buf[2], "|...|", 5);
+strncpy(new->floor->buf[3], "|[I]|", 5);
+new->floor->characters = NULL;
+return new;}

@@ -17,10 +17,14 @@ delwin(uibot);
 delwin(gwin);
 endwin();}
 
-void	ncurses_display(TIME *time, FLOOR *floor){
-ncurses_uitop_refresh(time, floor->floorn);
+
+void	ncurses_display(TIME *time, DUNGEON *dungeon){
+ncurses_uitop_refresh(time, dungeon->currfloor->floorn);
 ncurses_uibot_refresh();
-ncurses_game_refresh(floor);}
+ncurses_floor_refresh(dungeon->floor[dungeon->floorn]);
+//ncurses_floor_refresh(dungeon->currfloor);
+if (dungeon->elevator->floorn == dungeon->floorn && dungeon->elevator->door_open == 1)
+	ncurses_floor_refresh(dungeon->elevator->floor);}
 
 void	ncurses_uitop_refresh(TIME *time, int floorn){
 mvwprintw(uitop, 0, COLS-12-10, "Floor#%i", floorn+1);
@@ -32,15 +36,15 @@ void	ncurses_uibot_refresh(void){
 mvwprintw(uibot, 0, 0, "ui bottom");
 wrefresh(uibot);}
 
-void	ncurses_game_refresh(FLOOR *floor){
-wmove(gwin, 0, 0);
-for (int i = 0; i < floor->h; i++)
+void	ncurses_floor_refresh(FLOOR *floor){
+for (int i = 0; i < floor->h; i++){
+	wmove(gwin, floor->y+i, floor->x);
 	for (int j = 0; j < floor->w; j++)
-		waddch(gwin, floor->buf[i][j]);
+		waddch(gwin, floor->buf[i][j]);}
 list_do(floor->characters, &ncurses_draw_character);
 wrefresh(gwin);}
 
 void	ncurses_draw_character(List *list){
-mvwaddch(gwin,  ((CHARACTER*)(list->item))->y,
-		((CHARACTER*)(list->item))->x,
+mvwaddch(gwin,  ((CHARACTER*)(list->item))->currfloor->y+((CHARACTER*)(list->item))->y,
+		((CHARACTER*)(list->item))->currfloor->x+((CHARACTER*)(list->item))->x,
 		((CHARACTER*)(list->item))->c);}

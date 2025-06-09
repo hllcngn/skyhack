@@ -5,6 +5,7 @@ FLOOR *new = malloc(sizeof(FLOOR));
 new->floorn = floorn;
 new->h = h;
 new->w = w;
+new->y = new->x = 0;
 
 // floor & outside walls
 new->buf = malloc(sizeof(char*) * new->h);

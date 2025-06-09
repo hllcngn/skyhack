@@ -3,29 +3,39 @@
 #include "list.h"
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 typedef struct{ int y, x; } vect;
-
 typedef struct{
 	int	h, m, s, d;
 } TIME;
 
 typedef struct{
 	int	floorn;
-	int	h, w;
+	int	h, w, y, x;
 	char	**buf;
 	List	*characters;
 } FLOOR;
 
 typedef struct{
+	int	floorn;
+	int	door_open;
+	FLOOR	*floor;
+} ELEVATOR;
+
+typedef struct{
 	int	h, w;
 	int	nfloor;
 	FLOOR	**floor;
+	ELEVATOR	*elevator;
+	int	floorn;
+	FLOOR	*currfloor;
 } DUNGEON;
 
 typedef struct{
-	int	x, y;
+	int	x, y, floorn;
 	int	c;
+	FLOOR	*currfloor;
 } CHARACTER;
 
 int	main2(void);
@@ -37,10 +47,12 @@ void	dungeon_add_stairs(DUNGEON *dungeon);
 void	dungeon_add_elevators(DUNGEON *dungeon);
 FLOOR	*floor_new(int floorn, int h, int w);
 void	floor_free(FLOOR *floor);
+ELEVATOR	*elevator_new(int y, int x, int floorn);
 
-CHARACTER	*character_new(int y, int x, char c);
+CHARACTER	*character_new(int y, int x, int floorn, FLOOR *floor, char c);
 void	character_free(CHARACTER *character);
-void	character_movement(FLOOR *floor, CHARACTER *character, vect v);
+char	character_movement(FLOOR *floor, CHARACTER *character, vect v);
+void	character_change_floor(FLOOR *old_floor, FLOOR *new_floor, CHARACTER *character);
 
 void	time_add_s(TIME *t, int s);
 
