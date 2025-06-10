@@ -18,5 +18,6 @@ void	ncurses_uitop_refresh(TIME* time, int floorn);
 void	ncurses_uibot_refresh(void);
 void	ncurses_floor_refresh(FLOOR *floor);
 void	ncurses_draw_character(List *list);
+char	ncurses_prompt_call_elevator(void);
 
 #endif

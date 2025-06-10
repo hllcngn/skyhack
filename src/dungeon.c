@@ -9,7 +9,6 @@ for (int i = 0; i < new->nfloor; i++)
 	new->floor[i] = floor_new(i, new->h, new->w);
 dungeon_add_stairs(new);
 dungeon_add_elevators(new);
-new->floorn = 0;
 new->currfloor = new->floor[0];
 return new;}
 
@@ -38,23 +37,3 @@ for (int i = 0; i < dungeon->nfloor-1; i++){
 	strncpy(dungeon->floor[i]->buf[elevy+1]+elevx, "|   |", 5);
 	strncpy(dungeon->floor[i]->buf[elevy+2]+elevx, "|   |", 5);
 	strncpy(dungeon->floor[i]->buf[elevy+3]+elevx, "|[I]|", 5);}}
-
-ELEVATOR	*elevator_new(int y, int x, int floorn){
-ELEVATOR *new = malloc(sizeof(ELEVATOR));
-new->floorn = floorn;
-new->door_open = 0;
-new->floor = malloc(sizeof(FLOOR));
-new->floor->floorn = -1;
-new->floor->h = 4;
-new->floor->w = 5;
-new->floor->y = y;
-new->floor->x = x;
-new->floor->buf = malloc(sizeof(char*)*new->floor->h);
-for (int i = 0; i < new->floor->h; i++)
-	new->floor->buf[i] = malloc(new->floor->w);
-strncpy(new->floor->buf[0], "_____", 5);
-strncpy(new->floor->buf[1], "|...|", 5);
-strncpy(new->floor->buf[2], "|...|", 5);
-strncpy(new->floor->buf[3], "|[I]|", 5);
-new->floor->characters = NULL;
-return new;}

@@ -8,7 +8,7 @@ DUNGEON *dungeon;
 CHARACTER *player;
 
 dungeon = dungeon_new(ncurses_get_lines()-2, ncurses_get_cols());
-player = character_new(dungeon->h/2, dungeon->w/2, 0, dungeon->currfloor, 'G');
+player = character_new(dungeon->h/2, dungeon->w/2, dungeon->floor[0], 'G');
 list_add(&(dungeon->floor[0]->characters), player);
 
 time = malloc(sizeof(TIME));

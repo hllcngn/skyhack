@@ -1,7 +1,7 @@
 #include "myncurses.h"
-
 int	ncurses_get_lines(void){return LINES;}
 int	ncurses_get_cols(void){return COLS;}
+
 
 void	ncurses_init(void){
 initscr(); noecho(); cbreak();
@@ -18,12 +18,17 @@ delwin(gwin);
 endwin();}
 
 
-void	ncurses_display(TIME *time, DUNGEON *dungeon){
-ncurses_uitop_refresh(time, dungeon->currfloor->floorn);
+void	ncurses_display(TIME *time, DUNGEON *dungeon){ //maybe i can optionally add sth here
+ncurses_uitop_refresh(time, dungeon->currfloor->floorn);//to draw the elevator doors open or closed
 ncurses_uibot_refresh();
-ncurses_floor_refresh(dungeon->floor[dungeon->floorn]);
-//ncurses_floor_refresh(dungeon->currfloor);
-if (dungeon->elevator->floorn == dungeon->floorn && dungeon->elevator->door_open == 1)
+if (dungeon->currfloor != dungeon->elevator->floor
+		|| dungeon->elevator->door_open == 1)
+	ncurses_floor_refresh(dungeon->floor[dungeon->currfloor->floorn]);
+if (dungeon->currfloor != dungeon->elevator->floor
+		&& dungeon->elevator->floor->floorn == dungeon->currfloor->floorn
+		&& dungeon->elevator->door_open == 1)
+	ncurses_floor_refresh(dungeon->elevator->floor);
+if (dungeon->currfloor == dungeon->elevator->floor)
 	ncurses_floor_refresh(dungeon->elevator->floor);}
 
 void	ncurses_uitop_refresh(TIME *time, int floorn){
@@ -48,3 +53,12 @@ void	ncurses_draw_character(List *list){
 mvwaddch(gwin,  ((CHARACTER*)(list->item))->currfloor->y+((CHARACTER*)(list->item))->y,
 		((CHARACTER*)(list->item))->currfloor->x+((CHARACTER*)(list->item))->x,
 		((CHARACTER*)(list->item))->c);}
+
+
+char	ncurses_prompt_call_elevator(void){
+WINDOW *elevwin = newwin(5, 20, 0, 0);
+mvwprintw(elevwin, 1, 2, "call elevator?");
+mvwprintw(elevwin, 2, 8, "y/n");
+wrefresh(elevwin);
+delwin(elevwin);
+return getch();}

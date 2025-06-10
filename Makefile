@@ -13,6 +13,7 @@ SRCFILES	= \
 		floor.c \
 		logic.c \
 		mechanic.c \
+		elevator.c \
 
 
 OBJFOLDER	= ./obj/
