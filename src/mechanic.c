@@ -8,8 +8,10 @@ switch (c){
 case 'H': collision = 1; break;
 case '_': collision = 1; break;
 case '|': collision = 1; break;
-// elevator doors
+// furniture
+//  elevator doors
 case 'I':
 case '[':
-case ']': collision = c; break;}
+case ']':
+	  collision = c; break;}
 return collision;}

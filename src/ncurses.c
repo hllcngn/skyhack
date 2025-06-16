@@ -18,8 +18,8 @@ delwin(gwin);
 endwin();}
 
 
-void	ncurses_display(TIME *time, DUNGEON *dungeon){ //maybe i can optionally add sth here
-ncurses_uitop_refresh(time, dungeon->currfloor->floorn);//to draw the elevator doors open or closed
+void	ncurses_display(TIME *time, DUNGEON *dungeon){
+ncurses_uitop_refresh(time, dungeon->currfloor->floorn);
 ncurses_uibot_refresh();
 if (dungeon->currfloor != dungeon->elevator->floor
 		|| dungeon->elevator->door_open == 1)

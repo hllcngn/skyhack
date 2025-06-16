@@ -6,7 +6,7 @@
 #include <string.h>
 
 typedef struct{ int y, x; } vect;
-typedef struct{ int h, m, s, d; } TIME;
+typedef struct{ int d, h, m, s; } TIME;
 
 typedef struct{
 	int	floorn;
@@ -28,7 +28,9 @@ typedef struct{ //TODO rework
 	//char **elev_doors_closed,
 	//     **elev_doors_broken;
 	// ou
-	//char **elev; //then change door depending on doos status
+	//char **elev; //then change door depending on door status
+	//int h,w;
+	//
 	//int *door_status; //door status for each floor
 } ELEVATOR;
 
