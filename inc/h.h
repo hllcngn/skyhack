@@ -22,8 +22,12 @@ typedef struct{
 } CHARACTER;
 
 typedef struct{ //TODO rework
-	int	door_open;
-	FLOOR	*floor;
+	int	door_open; //0,1,2
+	FLOOR	*floor; //contains floor nb
+
+	//char **elev_doors_closed,
+	//     **elev_doors_broken;
+	//int *door_status; //door status for each floor
 } ELEVATOR;
 
 typedef struct{
@@ -31,7 +35,6 @@ typedef struct{
 	int	nfloor;
 	FLOOR	**floor;
 	ELEVATOR	*elevator;
-	//int	floorn;
 	FLOOR	*currfloor;
 } DUNGEON;
 
