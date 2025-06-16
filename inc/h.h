@@ -27,6 +27,8 @@ typedef struct{ //TODO rework
 
 	//char **elev_doors_closed,
 	//     **elev_doors_broken;
+	// ou
+	//char **elev; //then change door depending on doos status
 	//int *door_status; //door status for each floor
 } ELEVATOR;
 
