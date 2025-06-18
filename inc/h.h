@@ -42,8 +42,12 @@ typedef struct{
 	FLOOR	*currfloor;
 } DUNGEON;
 
+
 int	main2(void);
+
 int	game(DUNGEON *dungeon, CHARACTER *player, TIME *time);
+
+void	time_add_s(TIME *t, int s);
 
 DUNGEON	*dungeon_new(int h, int w);
 void	dungeon_free(DUNGEON *dungeon);
@@ -61,7 +65,8 @@ void	character_free(CHARACTER *character);
 char	character_movement(FLOOR *floor, CHARACTER *character, vect v);
 void	character_change_floor(FLOOR *new_floor, CHARACTER *character);
 
-void	time_add_s(TIME *t, int s);
+void	player_change_floor(DUNGEON *dungeon, FLOOR *floor_new, CHARACTER *player);
+void	player_change_floor_stairs(DUNGEON *dungeon, CHARACTER* player, TIME *time, char stairs);
 
 // logic.c
 vect	get_move_vector(char c);

@@ -26,30 +26,25 @@ case 'x':{vect v = get_move_vector(c);
 
 	  //TODO pop this into its own function
 	  if (furniture == '[' || furniture == ']' || furniture == 'I'){ // elevator doors
-		c = ncurses_prompt_call_elevator();
-		if (c == 'y')	elevator_call(dungeon);}
+		int c2 = ncurses_prompt_call_elevator();
+		if (c2 == 'y'){
+			elevator_call(dungeon);
+			time_add_s(time, 1);} break;}
 
 	  if (player->currfloor == dungeon->floor[player->currfloor->floorn]
 			&& (player->y == dungeon->elevator->floor->y+3
 				&& player->x == dungeon->elevator->floor->x+2)
-			&& (c == 'w' || c == 'q' || c == 'e')){
-		character_change_floor(dungeon->elevator->floor, player);
-		dungeon->currfloor = dungeon->elevator->floor;}
+			&& (c == 'w' || c == 'q' || c == 'e')){ //TODO /!\ collisions
+		player_change_floor(dungeon, dungeon->elevator->floor, player);}
 	  else if (player->currfloor == dungeon->elevator->floor
 			  &&(player->y == 3 && player->x == 2)
 			  &&(c == 's' || c == 'z' || c == 'x')){
-		character_change_floor(dungeon->floor[dungeon->currfloor->floorn], player);
-		dungeon->currfloor = dungeon->floor[dungeon->currfloor->floorn];}
+		player_change_floor(dungeon, dungeon->floor[dungeon->currfloor->floorn], player);}
 
-	  time_add_s(time, 1);} break;
-case '>': if (dungeon->currfloor->buf[player->y][player->x] == '>'){
-		character_change_floor(dungeon->floor[dungeon->currfloor->floorn+1], player);
-		dungeon->currfloor = dungeon->floor[dungeon->currfloor->floorn+1];
-		time_add_s(time, 30);} break;
-case '<': if (dungeon->currfloor->buf[player->y][player->x] == '<'){
-		character_change_floor(dungeon->floor[dungeon->currfloor->floorn-1], player);
-		dungeon->currfloor = dungeon->floor[dungeon->currfloor->floorn-1];
-		time_add_s(time, 30);} break;}
+	  time_add_s(time, 1);} break; //TODO increment only when moving
+				       //or is it better to increment time no matter what
+case '>':
+case '<': player_change_floor_stairs(dungeon, player, time, c); break;}
 
 ncurses_display(time, dungeon);}
 
