@@ -25,6 +25,7 @@ typedef struct{ //TODO rework
 	int	door_open; //0,1,2
 	FLOOR	*floor; //contains floor nb
 
+	// SEE ALSO TODO.txt
 	//char **elev_doors_closed,
 	//     **elev_doors_broken;
 	// ou

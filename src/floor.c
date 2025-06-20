@@ -3,8 +3,7 @@
 FLOOR	*floor_new(int floorn, int h, int w){
 FLOOR *new = malloc(sizeof(FLOOR));
 new->floorn = floorn;
-new->h = h;
-new->w = w;
+new->h = h; new->w = w;
 new->y = new->x = 0;
 
 // floor & outside walls

@@ -38,8 +38,10 @@ case 'x':{vect v = get_move_vector(c);
 		player_change_floor(dungeon, dungeon->elevator->floor, player);}
 	  else if (player->currfloor == dungeon->elevator->floor
 			  &&(player->y == 3 && player->x == 2)
-			  &&(c == 's' || c == 'z' || c == 'x')){
-		player_change_floor(dungeon, dungeon->floor[dungeon->currfloor->floorn], player);}
+			  &&(c == 's' || c == 'z' || c == 'x')
+			  &&furniture == 1){
+		player_change_floor(dungeon, dungeon->floor[dungeon->currfloor->floorn], player);
+		character_movement(player->currfloor, player, (vect){1,0});}
 
 	  time_add_s(time, 1);} break; //TODO increment only when moving
 				       //or is it better to increment time no matter what

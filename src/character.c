@@ -22,9 +22,9 @@ void	character_change_floor(FLOOR *new_floor, CHARACTER *character){
 List *pl = list_pop(&character->currfloor->characters, character);
 list_push_front(&new_floor->characters, pl);
 if (new_floor->y){
-	character->y = character->y - new_floor->y;
-	character->x = character->x - new_floor->x;}
+	character->y -= new_floor->y;
+	character->x -= new_floor->x;}
 else if (character->currfloor->y){
-	character->y = character->y + character->currfloor->y;
-	character->x = character->x + character->currfloor->x;}
+	character->y += character->currfloor->y;
+	character->x += character->currfloor->x;}
 character->currfloor = new_floor;}
