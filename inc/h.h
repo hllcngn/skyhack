@@ -48,8 +48,6 @@ int	main2(void);
 
 int	game(DUNGEON *dungeon, CHARACTER *player, TIME *time);
 
-void	time_add_s(TIME *t, int s);
-
 DUNGEON	*dungeon_new(int h, int w);
 void	dungeon_free(DUNGEON *dungeon);
 void	dungeon_add_stairs(DUNGEON *dungeon);
@@ -62,6 +60,7 @@ void	floor_free(FLOOR *floor);
 ELEVATOR	*elevator_new(int floorn, int y, int x);
 void	elevator_free(ELEVATOR *elev);
 void	elevator_call(DUNGEON* dungeon);
+void	elevator_handle_doorway(char k, char hit, DUNGEON *dungeon, CHARACTER *player);
 
 CHARACTER	*character_new(int y, int x, FLOOR *floor, char c);
 void	character_free(CHARACTER *character);
@@ -71,10 +70,12 @@ void	character_change_floor(FLOOR *new_floor, CHARACTER *character);
 void	player_change_floor(DUNGEON *dungeon, FLOOR *floor_new, CHARACTER *player);
 void	player_change_floor_stairs(DUNGEON *dungeon, CHARACTER* player, TIME *time, char stairs);
 
-// logic.c
-vect	get_move_vector(char c);
-
 // mechanic.c
 int	check_collision(FLOOR *floor, int y, int x);
+void	handle_hit(char hit, DUNGEON *dungeon);
+
+// logic.c
+vect	get_move_vector(char c);
+void	time_add_s(TIME *t, int s);
 
 #endif

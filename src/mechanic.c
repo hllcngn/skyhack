@@ -1,3 +1,4 @@
+#include "myncurses.h"
 #include "h.h"
 
 int	check_collision(FLOOR *floor, int y, int x){
@@ -15,3 +16,9 @@ case 'I':
 case '[':
 case ']': collision = c; break;}
 return collision;}
+
+void	handle_hit(char hit, DUNGEON *dungeon){
+if (hit == 0 || hit == 1) return;
+if (hit == '[' || hit == ']' || hit == 'I'){ // elevator doors
+	int c = ncurses_prompt_call_elevator(); //TODO call only if elevator isn't there
+	if (c == 'y')	elevator_call(dungeon);}}

@@ -22,3 +22,25 @@ dungeon->elevator->door_open = 1;
 strncpy(dungeon->floor[dungeon->currfloor->floorn]->buf[dungeon->elevator->floor->y+3]
 		+dungeon->elevator->floor->x+1, "].[", 3);
 strncpy(dungeon->elevator->floor->buf[3]+1, "].[", 3);}
+
+void	elevator_handle_doorway(char k, char hit, DUNGEON *dungeon, CHARACTER *player){
+if (player->currfloor == dungeon->floor[dungeon->currfloor->floorn]
+		&& (player->y == dungeon->elevator->floor->y+3
+			&& player->x == dungeon->elevator->floor->x+2)
+		&& (k == 'w' || k == 'q' || k == 'e')){ //TODO /!\ collisions
+	player_change_floor(dungeon, dungeon->elevator->floor, player);}
+else if (player->currfloor == dungeon->elevator->floor
+		&&(player->y == 3 && player->x == 2)
+		&&(k == 's' || k == 'z' || k == 'x')
+		&&hit == 1){
+	player_change_floor(dungeon, dungeon->floor[dungeon->currfloor->floorn], player);
+	switch(k){
+		case 's':
+		character_movement(player->currfloor, player, (vect){1,0});
+			break;
+		case 'z':
+		character_movement(player->currfloor, player, (vect){1,-1});
+			break;
+		case 'x':
+		character_movement(player->currfloor, player, (vect){1,1});
+			break;}}}

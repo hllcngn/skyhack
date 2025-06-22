@@ -14,6 +14,7 @@ SRCFILES	= \
 		logic.c \
 		mechanic.c \
 		elevator.c \
+		stack.c \
 
 
 OBJFOLDER	= ./obj/

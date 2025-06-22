@@ -15,8 +15,7 @@ char	character_movement(FLOOR *floor, CHARACTER *character, vect v){
 int collision = check_collision(floor, character->y+v.y, character->x+v.x);
 if (!collision){	character->y += v.y;
 			character->x += v.x;
-			return 0;}
-return collision;}
+			return 0;} return collision;}
 
 void	character_change_floor(FLOOR *new_floor, CHARACTER *character){
 List *pl = list_pop(&character->currfloor->characters, character);

@@ -2,18 +2,15 @@
 #include "myncurses.h"
 
 int	game(DUNGEON *dungeon, CHARACTER *player, TIME *time){
-char c;
+char k;
 int q = 0;
-
 ncurses_display(time, dungeon);
 
 while (!q){
 
-c = getch(); switch (c){
-// functioning
-case 27: q = 1; break;
+k = getch(); switch (k){
+case 27: q = 1; break; //TODO handle esc specifically
 
-// movement
 case 'w':
 case 'a':
 case 's':
@@ -21,33 +18,20 @@ case 'd':
 case 'q':
 case 'e':
 case 'z':
-case 'x':{vect v = get_move_vector(c);
-	  char furniture = character_movement(dungeon->currfloor, player, v);
-
-	  //TODO pop this into its own function
-	  if (furniture == '[' || furniture == ']' || furniture == 'I'){ // elevator doors
-		int c2 = ncurses_prompt_call_elevator();
-		if (c2 == 'y'){
-			elevator_call(dungeon);
-			time_add_s(time, 1);} break;}
-
-	  if (player->currfloor == dungeon->floor[player->currfloor->floorn]
-			&& (player->y == dungeon->elevator->floor->y+3
-				&& player->x == dungeon->elevator->floor->x+2)
-			&& (c == 'w' || c == 'q' || c == 'e')){ //TODO /!\ collisions
-		player_change_floor(dungeon, dungeon->elevator->floor, player);}
-	  else if (player->currfloor == dungeon->elevator->floor
-			  &&(player->y == 3 && player->x == 2)
-			  &&(c == 's' || c == 'z' || c == 'x')
-			  &&furniture == 1){
-		player_change_floor(dungeon, dungeon->floor[dungeon->currfloor->floorn], player);
-		character_movement(player->currfloor, player, (vect){1,0});}
-
-	  time_add_s(time, 1);} break; //TODO increment only when moving
-				       //or is it better to increment time no matter what
+case 'x': vect v = get_move_vector(k);
+	  char hit = character_movement(dungeon->currfloor, player, v);
+	  elevator_handle_doorway(k, hit, dungeon, player);
+	  handle_hit(hit, dungeon); break;
 case '>':
-case '<': player_change_floor_stairs(dungeon, player, time, c); break;}
+case '<': player_change_floor_stairs(dungeon, player, time, k); break;}
 
-ncurses_display(time, dungeon);}
+
+time_add_s(time, 1);//TODO increment only when moving
+		    //or is it better to increment time no matter what
+		    //i think it's nice to lose 1sec on an hesitation
+		    //but it shouldn't be on top of other timed actions
+
+ncurses_display(time, dungeon);
+}
 
 return EXIT_SUCCESS;}
