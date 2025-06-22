@@ -55,10 +55,12 @@ void	dungeon_free(DUNGEON *dungeon);
 void	dungeon_add_stairs(DUNGEON *dungeon);
 void	dungeon_add_elevators(DUNGEON *dungeon);
 
-FLOOR	*floor_new(int floorn, int h, int w);
+FLOOR	*floor_new(int floorn, int h, int w, int y, int x);
+FLOOR	*floor_new_dungeon_floor(int floorn, int h, int w);
 void	floor_free(FLOOR *floor);
 
-ELEVATOR	*elevator_new(int y, int x, int floorn);
+ELEVATOR	*elevator_new(int floorn, int y, int x);
+void	elevator_free(ELEVATOR *elev);
 void	elevator_call(DUNGEON* dungeon);
 
 CHARACTER	*character_new(int y, int x, FLOOR *floor, char c);
