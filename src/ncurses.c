@@ -38,7 +38,7 @@ mvwprintw(uitop, 0, COLS-12, "%3i:%2i:%2i:%2i",
 wrefresh(uitop);}
 
 void	ncurses_uibot_refresh(void){
-mvwprintw(uibot, 0, 0, "ui bottom");
+mvwprintw(uibot, 0, 0, "nothing there yet");
 wrefresh(uibot);}
 
 void	ncurses_floor_refresh(FLOOR *floor){
@@ -56,9 +56,9 @@ mvwaddch(gwin,  ((CHARACTER*)(list->item))->currfloor->y+((CHARACTER*)(list->ite
 
 
 char	ncurses_prompt_call_elevator(void){
-WINDOW *elevwin = newwin(5, 20, 0, 0);
-mvwprintw(elevwin, 1, 2, "call elevator?");
-mvwprintw(elevwin, 2, 8, "y/n");
+WINDOW *elevwin = newwin(5, 20, (LINES-5)/2, (COLS-20)/2);
+mvwprintw(elevwin, 2, (20-13)/2, "call elevator?");
+mvwprintw(elevwin, 3, (20-3)/2, "y/n");
 wrefresh(elevwin);
 delwin(elevwin);
 return getch();}
