@@ -62,3 +62,15 @@ mvwprintw(elevwin, 3, (20-3)/2, "y/n");
 wrefresh(elevwin);
 delwin(elevwin);
 return getch();}
+
+int	ncurses_prompt_elevator_select(DUNGEON *dungeon){
+WINDOW *elevwin = newwin(5, 24, (LINES-5)/2, (COLS-20)/2);
+mvwprintw(elevwin, 1, (24-19)/2, "enter floor number:");
+mvwprintw(elevwin, 2, (24-6)/2, "(1-%d)", dungeon->nfloor);
+wmove(elevwin, 3, (24-3)/2);
+curs_set(1); echo();
+wrefresh(elevwin);
+int n; wscanw(elevwin, "%d", &n); 
+curs_set(0); noecho();
+delwin(elevwin);
+return n;}
