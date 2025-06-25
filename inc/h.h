@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <ncurses.h>//for debug
 
 typedef struct{ int y, x; } vect;
 typedef struct{ int d, h, m, s; } TIME;
@@ -43,10 +44,11 @@ typedef struct{
 	FLOOR	*currfloor;
 } DUNGEON;
 
+#include "stack.h"
 
 int	main2(void);
 
-int	game(DUNGEON *dungeon, CHARACTER *player, TIME *time);
+int	game(List *stack, DUNGEON *dungeon, CHARACTER *player, TIME *time);
 
 DUNGEON	*dungeon_new(int h, int w);
 void	dungeon_free(DUNGEON *dungeon);
@@ -77,5 +79,10 @@ void	handle_hit(char hit, DUNGEON *dungeon);
 // logic.c
 vect	get_move_vector(char c);
 void	time_add_s(TIME *t, int s);
+
+
+
+
+void	player_movement(List **stack, void *player, DUNGEON *dungeon, void *k);
 
 #endif

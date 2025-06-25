@@ -15,5 +15,6 @@ List	*list_pop(List **list, void *item);
 void	list_free(List *list);
 
 void	list_do(List *list, void (*f)(List*));
+int	list_count(List *list);
 
 #endif

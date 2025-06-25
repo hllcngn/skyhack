@@ -1,5 +1,9 @@
 #include "h.h"
 
+void	player_movement(List **stack, void *player, DUNGEON *dungeon, void *k){
+vect v = get_move_vector(*(char*)k);
+char hit = character_movement(dungeon->currfloor, player, v);}
+
 void	player_change_floor(DUNGEON *dungeon, FLOOR *floor_new,
 		CHARACTER *player){
 character_change_floor(floor_new, player);

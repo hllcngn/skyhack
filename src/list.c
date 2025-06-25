@@ -20,10 +20,10 @@ if ((*list)->item == item){
 	*list = (*list)->next;
 	return l;}
 for (List *l = (*list)->next, *l2 = *list; l; l = l->next){
-	if (l->item = item){
+	if (l->item == item){
 		l2->next = l->next;
 		return l;}
-	l2 = l;}
+	else l2 = l;}
 return NULL;}
 
 void	list_free(List *list){
@@ -34,3 +34,9 @@ free(list);}
 void	list_do(List *list, void (*f)(List*)){
 for (List *l = list; l; l = l->next)
 	f(l);}
+
+int	list_count(List *list){
+int i = 0;
+for (List *l = list; l; l = l->next)
+	i ++;
+return i;}
