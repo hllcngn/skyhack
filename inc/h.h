@@ -74,7 +74,8 @@ void	player_change_floor_stairs(DUNGEON *dungeon, CHARACTER* player, TIME *time,
 
 // mechanic.c
 int	check_collision(FLOOR *floor, int y, int x);
-void	handle_hit(char hit, DUNGEON *dungeon);
+//void	handle_hit(char hit, DUNGEON *dungeon);
+void	handle_hit(List *stack, DUNGEON *dungeon, CHARACTER *player, char hit);
 
 // logic.c
 vect	get_move_vector(char c);
@@ -83,6 +84,6 @@ void	time_add_s(TIME *t, int s);
 
 
 
-void	player_movement(List **stack, void *player, DUNGEON *dungeon, void *k);
+void	player_movement(List **stack, TIME *time, void *player, DUNGEON *dungeon, void *k);
 
 #endif

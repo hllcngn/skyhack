@@ -19,21 +19,17 @@ case 'q':
 case 'e':
 case 'z':
 case 'x': list_add(&stack, stack_new(1, player, &player_movement, (void*)&k));
-//	  vect v = get_move_vector(k);
-//	  char hit = character_movement(dungeon->currfloor, player, v);
+	  vect v = get_move_vector(k);
+	  char hit = check_collision(dungeon->currfloor, player->y+v.y, player->x+v.x);
+	  handle_hit(stack, dungeon, player, hit);
 //	  elevator_handle_doorway(k, hit, dungeon, player);
-//	  handle_hit(hit, dungeon); break;
 break;
 case '>':
-case '<': player_change_floor_stairs(dungeon, player, time, k); break;}
+case '<': player_change_floor_stairs(dungeon, player, time, k); break;
+default: time_add_s(time, 1); break;}
 
 
-full_stack_do(&stack, dungeon);
-
-time_add_s(time, 1);//TODO increment only when moving
-		    //or is it better to increment time no matter what
-		    //i think it's nice to lose 1sec on an hesitation
-		    //but it shouldn't be on top of other timed actions
+full_stack_do(&stack, time, dungeon);
 
 ncurses_display(time, dungeon);
 }
