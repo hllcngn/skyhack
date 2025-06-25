@@ -61,7 +61,8 @@ void	floor_free(FLOOR *floor);
 
 ELEVATOR	*elevator_new(int floorn, int y, int x);
 void	elevator_free(ELEVATOR *elev);
-void	elevator_call(DUNGEON* dungeon);
+//void	elevator_call(DUNGEON* dungeon);
+void	elevator_call(List **stack, TIME *time, void *null, DUNGEON* dungeon, void *null2);
 void	elevator_handle_doorway(char k, char hit, DUNGEON *dungeon, CHARACTER *player);
 
 CHARACTER	*character_new(int y, int x, FLOOR *floor, char c);
@@ -75,7 +76,7 @@ void	player_change_floor_stairs(DUNGEON *dungeon, CHARACTER* player, TIME *time,
 // mechanic.c
 int	check_collision(FLOOR *floor, int y, int x);
 //void	handle_hit(char hit, DUNGEON *dungeon);
-void	handle_hit(List *stack, DUNGEON *dungeon, CHARACTER *player, char hit);
+void	handle_hit(List **stack, DUNGEON *dungeon, CHARACTER *player, char hit);
 
 // logic.c
 vect	get_move_vector(char c);

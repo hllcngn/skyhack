@@ -19,11 +19,7 @@ case 'q':
 case 'e':
 case 'z':
 case 'x': list_add(&stack, stack_new(1, player, &player_movement, (void*)&k));
-	  vect v = get_move_vector(k);
-	  char hit = check_collision(dungeon->currfloor, player->y+v.y, player->x+v.x);
-	  handle_hit(stack, dungeon, player, hit);
-//	  elevator_handle_doorway(k, hit, dungeon, player);
-break;
+	break;
 case '>':
 case '<': player_change_floor_stairs(dungeon, player, time, k); break;
 default: time_add_s(time, 1); break;}

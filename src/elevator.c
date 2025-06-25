@@ -14,7 +14,10 @@ void	elevator_free(ELEVATOR *elev){
 floor_free(elev->floor);
 free(elev);}
 
-void	elevator_call(DUNGEON* dungeon){
+void	stack_elevator_call(List *stack, DUNGEON *dungeon, CHARACTER *player, char hit){
+}
+
+void	elevator_call(List **stack, TIME *time, void *null, DUNGEON* dungeon, void *null2){
 strncpy(dungeon->floor[dungeon->elevator->floor->floorn]->buf[dungeon->elevator->floor->y+3]
 		+dungeon->elevator->floor->x+1, "[I]", 3);
 dungeon->elevator->floor->floorn = dungeon->currfloor->floorn;
@@ -27,12 +30,13 @@ void	elevator_handle_doorway(char k, char hit, DUNGEON *dungeon, CHARACTER *play
 if (player->currfloor == dungeon->floor[dungeon->currfloor->floorn]
 		&& (player->y == dungeon->elevator->floor->y+3
 			&& player->x == dungeon->elevator->floor->x+2)
-		&& (k == 'w' || k == 'q' || k == 'e')){
+		&& (k == 'w' || k == 'q' || k == 'e')
+		&& hit == 0){
 	player_change_floor(dungeon, dungeon->elevator->floor, player);}
 else if (player->currfloor == dungeon->elevator->floor
-		&&(player->y == 3 && player->x == 2)
-		&&(k == 's' || k == 'z' || k == 'x')
-		&&hit == 1){
+		&& (player->y == 3 && player->x == 2)
+		&& (k == 's' || k == 'z' || k == 'x')
+		&& hit == 1){
 	player_change_floor(dungeon, dungeon->floor[dungeon->currfloor->floorn], player);
 	vect v = get_move_vector(k);
 	character_movement(player->currfloor, player, v);}}

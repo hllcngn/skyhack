@@ -2,7 +2,9 @@
 
 void	player_movement(List **stack, TIME *time, void *player, DUNGEON *dungeon, void *k){
 vect v = get_move_vector(*(char*)k);
-character_movement(dungeon->currfloor, player, v);
+int hit = character_movement(dungeon->currfloor, player, v);
+handle_hit(stack, dungeon, player, hit);
+elevator_handle_doorway(*(char*)k, hit, dungeon, player);
 time_add_s(time, 1);}
 
 void	player_change_floor(DUNGEON *dungeon, FLOOR *floor_new,

@@ -17,8 +17,11 @@ case '[':
 case ']': collision = c; break;}
 return collision;}
 
-void	handle_hit(List *stack, DUNGEON *dungeon, CHARACTER *player, char hit){
+void	handle_hit(List **stack, DUNGEON *dungeon, CHARACTER *player, char hit){
 if (hit == 0 || hit == 1) return;
 if (hit == '[' || hit == ']' || hit == 'I'){ // elevator doors
 	int c = ncurses_prompt_call_elevator(); //TODO call only if elevator isn't there
-	if (c == 'y')	elevator_call(dungeon);}}
+	if (c == 'y')
+	//	elevator_call(dungeon);
+	list_add(stack, stack_new(5, NULL, &elevator_call, NULL));
+}}
