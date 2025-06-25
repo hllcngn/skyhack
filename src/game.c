@@ -19,9 +19,7 @@ case 'q':
 case 'e':
 case 'z':
 case 'x': list_add(&stack, stack_new(1, player, &player_movement, (void*)&k));
-list_add(&stack, stack_new(1, player, &player_movement, (void*)&k));
-k = 's';
-	  vect v = get_move_vector(k);
+//	  vect v = get_move_vector(k);
 //	  char hit = character_movement(dungeon->currfloor, player, v);
 //	  elevator_handle_doorway(k, hit, dungeon, player);
 //	  handle_hit(hit, dungeon); break;
@@ -30,12 +28,7 @@ case '>':
 case '<': player_change_floor_stairs(dungeon, player, time, k); break;}
 
 
-//> going through stack here
-//((Stack*)(stack->item))->f(&stack, ((Stack*)(stack->item))->obj, dungeon, ((Stack*)(stack->item))->param);
-//stack_do(&stack, stack, dungeon);
-//mvprintw(1, 0, "List has %d items", list_count(stack)); refresh(); getch();
 full_stack_do(&stack, dungeon);
-//full_stack_pop_0(&stack);
 
 time_add_s(time, 1);//TODO increment only when moving
 		    //or is it better to increment time no matter what
