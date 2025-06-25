@@ -39,7 +39,7 @@ mvwprintw(uitop, 0, COLS-12, "%3i:%2i:%2i:%2i",
 wrefresh(uitop);}
 
 void	ncurses_uibot_refresh(void){
-mvwprintw(uibot, 0, 0, "nothing there yet");
+mvwprintw(uibot, 0, 0, "");
 wrefresh(uibot);}
 
 void	ncurses_floor_refresh(FLOOR *floor){
@@ -65,9 +65,10 @@ delwin(elevwin);
 return getch();}
 
 int	ncurses_prompt_elevator_select(DUNGEON *dungeon){
-WINDOW *elevwin = newwin(5, 24, (LINES-5)/2, (COLS-20)/2);
+WINDOW *elevwin = newwin(6, 24, (LINES-5)/2, (COLS-20)/2);
 mvwprintw(elevwin, 1, (24-19)/2, "enter floor number:");
 mvwprintw(elevwin, 2, (24-6)/2, "(1-%d)", dungeon->nfloor);
+mvwprintw(elevwin, 5, (24-10)/2, "doors: 0");
 wmove(elevwin, 3, (24-3)/2);
 curs_set(1); echo();
 wrefresh(elevwin);

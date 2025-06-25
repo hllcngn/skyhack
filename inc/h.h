@@ -85,5 +85,6 @@ void	player_turn(List **stack, void *player, DUNGEON *dungeon, void *k);
 void	elevator_call(List **stack, void *null, DUNGEON* dungeon, void *null2);
 void	elevator_doors_close(List **stack, void *elev, DUNGEON *dungeon, void *null);
 void	elevator_doors_open(List **stack, void *elev, DUNGEON *dungeon, void *null);
+void	elevator_move(List **stack, void *elevator, DUNGEON *dungeon, void *floorn);
 
 #endif

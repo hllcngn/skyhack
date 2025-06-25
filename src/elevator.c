@@ -25,6 +25,10 @@ strncpy(((ELEVATOR*)elev)->floor->buf[3]+1, "].[", 3);
 strncpy(dungeon->floor[((ELEVATOR*)elev)->floor->floorn]->buf[((ELEVATOR*)elev)->floor->y+3]
 		+((ELEVATOR*)elev)->floor->x+1, "].[", 3);}
 
+void	elevator_move(List **stack, void *elev, DUNGEON *dungeon, void *floorn){
+((ELEVATOR*)elev)->floor->floorn = *(int*)floorn;
+}
+
 void	elevator_call(List **stack, void *null, DUNGEON* dungeon, void *null2){
 strncpy(dungeon->floor[dungeon->elevator->floor->floorn]->buf[dungeon->elevator->floor->y+3]
 		+dungeon->elevator->floor->x+1, "[I]", 3);
