@@ -27,6 +27,6 @@ if ((hit == '[' || hit == ']' || hit == 'I')
 if ((hit == '[' || hit == ']' || hit == 'I')
 		&& (k == 's' || k == 'z' || k == 'x')){
 	int c = ncurses_prompt_elevator_select(dungeon);
-
+	list_add(stack, stack_new(1, dungeon->elevator, &elevator_doors_close, NULL));
 }
 }

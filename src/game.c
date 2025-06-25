@@ -18,7 +18,7 @@ case 'd':
 case 'q':
 case 'e':
 case 'z':
-case 'x': list_add(&stack, stack_new(1, player, &player_movement, (void*)&k));
+case 'x': list_add(&stack, stack_new(1, player, &player_turn, (void*)&k));
 	break;
 case '>':
 case '<': player_change_floor_stairs(dungeon, player, time, k); break;

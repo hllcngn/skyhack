@@ -8,10 +8,10 @@ struct stack{
 	int	count;
 	void	*obj;
 	void	*param;
-	void	(*f)(List**, TIME*, void*, DUNGEON*, void*);
+	void	(*f)(List**, void*, DUNGEON*, void*);
 };
 
-Stack	*stack_new(int count, void *obj, void (*f)(List**, TIME *time,
+Stack	*stack_new(int count, void *obj, void (*f)(List**,
 			void*, DUNGEON*, void*), void *param);
 void	stack_free(List *stack);
 

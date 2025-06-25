@@ -14,10 +14,18 @@ void	elevator_free(ELEVATOR *elev){
 floor_free(elev->floor);
 free(elev);}
 
-void	stack_elevator_call(List *stack, DUNGEON *dungeon, CHARACTER *player, char hit){
-}
+void	elevator_doors_close(List **stack, void *elev, DUNGEON *dungeon, void *null){
+((ELEVATOR*)elev)->door_open = 0;
+strncpy(((ELEVATOR*)elev)->floor->buf[3]+1, "[I]", 3);
+strncpy(dungeon->floor[((ELEVATOR*)elev)->floor->floorn]->buf[((ELEVATOR*)elev)->floor->y+3]
+		+((ELEVATOR*)elev)->floor->x+1, "[I]", 3);}
+void	elevator_doors_open(List **stack, void *elev, DUNGEON *dungeon, void *null){
+((ELEVATOR*)(elev))->door_open = 1;
+strncpy(((ELEVATOR*)elev)->floor->buf[3]+1, "].[", 3);
+strncpy(dungeon->floor[((ELEVATOR*)elev)->floor->floorn]->buf[((ELEVATOR*)elev)->floor->y+3]
+		+((ELEVATOR*)elev)->floor->x+1, "].[", 3);}
 
-void	elevator_call(List **stack, TIME *time, void *null, DUNGEON* dungeon, void *null2){
+void	elevator_call(List **stack, void *null, DUNGEON* dungeon, void *null2){
 strncpy(dungeon->floor[dungeon->elevator->floor->floorn]->buf[dungeon->elevator->floor->y+3]
 		+dungeon->elevator->floor->x+1, "[I]", 3);
 dungeon->elevator->floor->floorn = dungeon->currfloor->floorn;

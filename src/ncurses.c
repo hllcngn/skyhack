@@ -24,10 +24,11 @@ ncurses_uibot_refresh();
 if (dungeon->currfloor != dungeon->elevator->floor
 		|| dungeon->elevator->door_open == 1)
 	ncurses_floor_refresh(dungeon->floor[dungeon->currfloor->floorn]);
-if (dungeon->currfloor != dungeon->elevator->floor
+else if (dungeon->currfloor != dungeon->elevator->floor
 		&& dungeon->elevator->floor->floorn == dungeon->currfloor->floorn
 		&& dungeon->elevator->door_open == 1)
 	ncurses_floor_refresh(dungeon->elevator->floor);
+else werase(gwin);
 if (dungeon->currfloor == dungeon->elevator->floor)
 	ncurses_floor_refresh(dungeon->elevator->floor);}
 

@@ -61,8 +61,6 @@ void	floor_free(FLOOR *floor);
 
 ELEVATOR	*elevator_new(int floorn, int y, int x);
 void	elevator_free(ELEVATOR *elev);
-//void	elevator_call(DUNGEON* dungeon);
-void	elevator_call(List **stack, TIME *time, void *null, DUNGEON* dungeon, void *null2);
 void	elevator_handle_doorway(char k, char hit, DUNGEON *dungeon, CHARACTER *player);
 
 CHARACTER	*character_new(int y, int x, FLOOR *floor, char c);
@@ -83,7 +81,9 @@ void	time_add_s(TIME *t, int s);
 
 
 
-
-void	player_movement(List **stack, TIME *time, void *player, DUNGEON *dungeon, void *k);
+void	player_turn(List **stack, void *player, DUNGEON *dungeon, void *k);
+void	elevator_call(List **stack, void *null, DUNGEON* dungeon, void *null2);
+void	elevator_doors_close(List **stack, void *elev, DUNGEON *dungeon, void *null);
+void	elevator_doors_open(List **stack, void *elev, DUNGEON *dungeon, void *null);
 
 #endif

@@ -1,7 +1,7 @@
 #include "h.h"
 
 Stack	*stack_new(int count, void *obj,
-		void (*f)(List**, TIME *time, void*, DUNGEON*, void*), void *param){
+		void (*f)(List**, void*, DUNGEON*, void*), void *param){
 Stack *new = malloc(sizeof(Stack));
 new->count = count;
 new->obj = obj;
@@ -17,6 +17,7 @@ list_free(stack);}
 
 void	full_stack_do(List **full_stack, TIME *time,  DUNGEON *dungeon){
 List *l = *full_stack;
+time_add_s(time, 1);
 while (l)
 	l = stack_do(full_stack, l, time, dungeon);}
 
@@ -27,7 +28,6 @@ count --;
 if (count == 0){
 	((Stack*)(stack_item->item))->f(
 			full_stack,
-			time,
 			((Stack*)(stack_item->item))->obj,
 			dungeon,
 			((Stack*)(stack_item->item))->param);

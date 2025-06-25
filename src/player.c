@@ -1,11 +1,10 @@
 #include "h.h"
 
-void	player_movement(List **stack, TIME *time, void *player, DUNGEON *dungeon, void *k){
+void	player_turn(List **stack, void *player, DUNGEON *dungeon, void *k){
 vect v = get_move_vector(*(char*)k);
 int hit = character_movement(dungeon->currfloor, player, v);
-handle_hit(stack, dungeon, player, hit, *(char*)k);
 elevator_handle_doorway(*(char*)k, hit, dungeon, player);
-time_add_s(time, 1);}
+if (hit) handle_hit(stack, dungeon, player, hit, *(char*)k);} //TODO callback?
 
 void	player_change_floor(DUNGEON *dungeon, FLOOR *floor_new,
 		CHARACTER *player){
