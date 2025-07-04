@@ -17,17 +17,20 @@ case '[':
 case ']': collision = c; break;}
 return collision;}
 
+// TODO WIP
 void	handle_hit(List **stack, DUNGEON *dungeon, CHARACTER *player, char hit, char k){
 if (hit == 0 || hit == 1) return;
 if ((hit == '[' || hit == ']' || hit == 'I')
+		// && floor != elevator
 		&& (k == 'w' || k == 'q' || k == 'e')){
 	char c = ncurses_prompt_call_elevator(); //TODO call only if elevator isn't there
 	if (c == 'y')
 	list_add(stack, stack_new(5, NULL, &elevator_call, NULL));}
 if ((hit == '[' || hit == ']' || hit == 'I')
+		// && floor == elevator (put it in the same if loop)
 		&& (k == 's' || k == 'z' || k == 'x')){
 	int c = ncurses_prompt_elevator_select(dungeon);
-	if (c == 0 && dungeon->elevator->door_open == 1)
+	if (c == 0 && dungeon->elevator->door_open == 1) // open/close doors
 		list_add(stack, stack_new(1, dungeon->elevator, &elevator_doors_close, NULL));
 	else if (c == 0 && dungeon->elevator->door_open == 0)
 		list_add(stack, stack_new(1, dungeon->elevator, &elevator_doors_open, NULL));
@@ -36,6 +39,7 @@ if ((hit == '[' || hit == ']' || hit == 'I')
 		list_add(stack, stack_new(1, dungeon->elevator, &elevator_doors_close, NULL));
 		int *c2 = malloc(sizeof(int)); *c2 = c;
 		list_add(stack, stack_new(5, dungeon->elevator, &elevator_move, c2));
+		// both of these calls shouldn't stack
 }
 }
 }

@@ -20,7 +20,7 @@ case 'e':
 case 'z':
 case 'x': list_add(&stack, stack_new(1, player, &player_turn, (void*)&k));
 	break;
-case '>':
+case '>': // TODO put this on the stack too:
 case '<': player_change_floor_stairs(dungeon, player, time, k); break;
 default: time_add_s(time, 1); break;}
 

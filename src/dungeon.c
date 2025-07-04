@@ -27,6 +27,7 @@ for (int i = 0; i < dungeon->nfloor-1; i++){
 	dungeon->floor[i]->buf[stairsy][stairsx] = '>';
 	dungeon->floor[i+1]->buf[stairsy][stairsx] = '<';}}
 
+
 void	dungeon_add_elevators(DUNGEON *dungeon){// TODO check for collision with stairs
 int elevy = rand()%(dungeon->h-2-4)+1;
 int elevx = rand()%(dungeon->w-2-4)+1;

@@ -17,6 +17,8 @@ if (!collision){	character->y += v.y;
 			character->x += v.x;
 			return 0;} return collision;}
 
+// doesn't this get used only to increment or decrement the floorn
+// or move to and from the elevator?
 void	character_change_floor(FLOOR *new_floor, CHARACTER *character){
 List *pl = list_pop(&character->currfloor->characters, character);
 list_push_front(&new_floor->characters, pl);

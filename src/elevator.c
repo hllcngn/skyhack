@@ -32,12 +32,16 @@ void	elevator_move(List **stack, void *elev, DUNGEON *dungeon, void *floorn){
 void	elevator_call(List **stack, void *null, DUNGEON* dungeon, void *null2){
 strncpy(dungeon->floor[dungeon->elevator->floor->floorn]->buf[dungeon->elevator->floor->y+3]
 		+dungeon->elevator->floor->x+1, "[I]", 3);
-dungeon->elevator->floor->floorn = dungeon->currfloor->floorn;
+dungeon->elevator->floor->floorn = dungeon->currfloor->floorn; // gotta make the elevator
+							       // progressively move through floors
 dungeon->elevator->door_open = 1;
 strncpy(dungeon->floor[dungeon->currfloor->floorn]->buf[dungeon->elevator->floor->y+3]
 		+dungeon->elevator->floor->x+1, "].[", 3);
 strncpy(dungeon->elevator->floor->buf[3]+1, "].[", 3);}
 
+// this might be improved through having buffers of the elevator with doors open or closed
+// and not having the doorway on the floor
+// OR alternatively, having buffers for the elevator walls/door and them not part of the elevator floor
 void	elevator_handle_doorway(char k, char hit, DUNGEON *dungeon, CHARACTER *player){
 if (player->currfloor == dungeon->floor[dungeon->currfloor->floorn]
 		&& (player->y == dungeon->elevator->floor->y+3

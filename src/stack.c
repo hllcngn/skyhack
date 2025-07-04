@@ -10,7 +10,7 @@ new->f = f;
 return new;}
 
 void	stack_free(List *stack){
-//free(stack->param);
+//free(stack->param); //TODO check if this is working
 free(stack->item);
 list_free(stack);}
 

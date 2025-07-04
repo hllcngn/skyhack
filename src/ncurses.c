@@ -32,6 +32,7 @@ else werase(gwin);
 if (dungeon->currfloor == dungeon->elevator->floor)
 	ncurses_floor_refresh(dungeon->elevator->floor);}
 
+
 void	ncurses_uitop_refresh(TIME *time, int floorn){
 mvwprintw(uitop, 0, COLS-12-10, "Floor#%i", floorn+1);
 mvwprintw(uitop, 0, COLS-12, "%3i:%2i:%2i:%2i",
@@ -42,6 +43,7 @@ void	ncurses_uibot_refresh(void){
 mvwprintw(uibot, 0, 0, "");
 wrefresh(uibot);}
 
+
 void	ncurses_floor_refresh(FLOOR *floor){
 for (int i = 0; i < floor->h; i++){
 	wmove(gwin, floor->y+i, floor->x);
@@ -50,10 +52,12 @@ for (int i = 0; i < floor->h; i++){
 list_do(floor->characters, &ncurses_draw_character);
 wrefresh(gwin);}
 
+
 void	ncurses_draw_character(List *list){
 mvwaddch(gwin,  ((CHARACTER*)(list->item))->currfloor->y+((CHARACTER*)(list->item))->y,
 		((CHARACTER*)(list->item))->currfloor->x+((CHARACTER*)(list->item))->x,
 		((CHARACTER*)(list->item))->c);}
+
 
 
 char	ncurses_prompt_call_elevator(void){
