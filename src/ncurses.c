@@ -5,6 +5,7 @@ int	ncurses_get_cols(void){return COLS;}
 
 void	ncurses_init(void){
 initscr(); noecho(); cbreak();
+keypad(stdscr, TRUE); set_escdelay(30);
 curs_set(0); refresh();
 
 uitop = newwin(1, COLS, 0, 0);

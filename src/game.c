@@ -2,14 +2,14 @@
 #include "myncurses.h"
 
 int	game(List *stack, DUNGEON *dungeon, CHARACTER *player, TIME *time){
-char k;
+int k;
 int q = 0;
 ncurses_display(time, dungeon);
 
 while (!q){
 
 k = getch(); switch (k){
-case 27: q = 1; break; //TODO handle esc specifically
+case 27: q = 1; break; //ESC key specifically since keypad is TRUE
 
 case 'w':
 case 'a':
